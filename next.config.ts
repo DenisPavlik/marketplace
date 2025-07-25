@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       {
         hostname: '*.googleusercontent.com',
       },
+      {
+        hostname: '*.imagekit.io',
+      }
     ],
   },
 };

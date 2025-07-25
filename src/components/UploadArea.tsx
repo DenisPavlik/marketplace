@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Uploader from "./Uploader";
 import clsx from "clsx";
+import UploadThumbnail from "./UploadThumbnail";
 
 type Props = {
   files: UploadedFile[];
@@ -40,10 +41,10 @@ export default function UploadArea({ files, setFiles }: Props) {
             className="hidden"
             onSuccess={(file: any) => {
               setFiles((prev) => [...prev, file]);
-              setIsUploading(false)
+              setIsUploading(false);
             }}
-            onUploadStart={()=> {
-              setIsUploading(true)
+            onUploadStart={() => {
+              setIsUploading(true);
             }}
           />
           <div className="flex items-center justify-center gap-1 p-1 text-sm">
@@ -57,9 +58,11 @@ export default function UploadArea({ files, setFiles }: Props) {
             )}
           </div>
         </button>
-        {files.map((file) => (
-          <div key={file.fileId}>{file.url}</div>
+        <div className="flex gap-1 py-2 items-center flex-wrap">
+          {files.map((file:any) => (
+          <UploadThumbnail key={file.fileId} file={file} />
         ))}
+        </div>
       </div>
     </div>
   );

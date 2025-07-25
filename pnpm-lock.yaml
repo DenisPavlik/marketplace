@@ -23,6 +23,9 @@ importers:
       imagekit:
         specifier: ^6.0.0
         version: 6.0.0
+      imagekit-javascript:
+        specifier: ^4.0.1
+        version: 4.0.1
       imagekitio-react:
         specifier: ^4.3.0
         version: 4.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1188,6 +1191,9 @@ packages:
 
   imagekit-javascript@3.1.0:
     resolution: {integrity: sha512-56YmmOg6vKarIg4A41E9T08qQ2ri8862AYU/Ykhrbr9Cd8i6BIeKkroR16cmsNYFOIoLk35/O7b8o7I8DoyGaQ==}
+
+  imagekit-javascript@4.0.1:
+    resolution: {integrity: sha512-V3eVMz7OW8w8dSNJXPtVcWQMdV0P1wRs+Bftb2B1bKRl8NjOf+NGRWYb/meJlrmSL/HxT68PjM92/XFB+9ZfJA==}
 
   imagekit@6.0.0:
     resolution: {integrity: sha512-0MsxThZM2PYH6ngwN3zi9PDa8pCB5mEZG2FSySYiZk3Hfri8IMwUqVNzRlLQewBHQ3YtTN9M59O0Xe9HRewtOA==}
@@ -3182,6 +3188,8 @@ snapshots:
   ignore@7.0.5: {}
 
   imagekit-javascript@3.1.0: {}
+
+  imagekit-javascript@4.0.1: {}
 
   imagekit@6.0.0:
     dependencies:
