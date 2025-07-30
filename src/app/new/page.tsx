@@ -1,23 +1,62 @@
 "use client";
 import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Location, UploadedFile } from "../../../types/imagekit";
 import UploadArea from "@/components/UploadArea";
 import AdTextInputs from "@/components/AdTextInputs";
 import LocationPicker from "@/components/LocationPicker";
+import { createAd } from "../actions/adActions";
+import toast from "react-hot-toast";
+
+const defLoc = {
+  lat: 40.781499583285544,
+  lng: -73.967,
+};
 
 export default function NewAdPage() {
   const [files, setFiles] = useState<UploadedFile[]>([]);
-  const [location, setLocation] = useState<Location>();
+  const [location, setLocation] = useState<Location>(defLoc);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  function handleLocateMyPosition() {
+    function success(position: GeolocationPosition) {
+      const { latitude, longitude } = position.coords;
+      setLocation({ lat: latitude, lng: longitude });
+    }
+    navigator.geolocation.getCurrentPosition(success, console.error);
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      formData.set("location", JSON.stringify(location));
+      formData.set("files", JSON.stringify(files));
+      const res = await createAd(formData);
+      if (res.success) {
+        toast.success("Ad created successfully! ✅");
+      } else {
+        toast.error(`Something went wrong: ${res.message} ❌`);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
   return (
-    <form className="max-w-2xl mx-auto flex flex-col gap-4">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-2xl mx-auto flex flex-col gap-4"
+    >
       <div className="grid grid-cols-2 gap-12">
         <div className="grow pt-4">
           <UploadArea files={files} setFiles={setFiles} />
           <div className="mt-8">
             <button
+              onClick={handleLocateMyPosition}
+              type="button"
               className="flex items-center justify-center w-full
             gap-1 p-1 border text-gray-500"
             >
@@ -28,7 +67,7 @@ export default function NewAdPage() {
               <span>Share current location</span>
             </button>
             <div className="rounded overflow-hidden text-gray-400 text-center mt-2">
-              <LocationPicker onChange={(location) => setLocation(location)} />
+              <LocationPicker setLocation={setLocation} location={location} />
             </div>
           </div>
         </div>
@@ -37,8 +76,15 @@ export default function NewAdPage() {
         </div>
       </div>
 
-      <button type="submit" className="solidBtn w-sm mx-auto">
-        Submit
+      <button
+        type="submit"
+        disabled={isLoading}
+        className={
+          (isLoading ? "!bg-gray-400 !text-white !border-gray-500" : "") +
+          " solidBtn w-sm mx-auto"
+        }
+      >
+        {isLoading ? "Submitting..." : "Submit"}
       </button>
     </form>
   );
