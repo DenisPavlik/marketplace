@@ -1,23 +1,33 @@
-import Image from "next/image";
-import { UploadedFile } from "../../types/imagekit";
 import { UploadResponse } from "imagekit/dist/libs/interfaces";
-import ImageKit from "imagekit-javascript";
+import React from "react";
+import MyImage from "./MyImage";
 
-const ik = new ImageKit({
-  urlEndpoint: process.env.NEXT_PUBLIC_IK_ENDPOINT as string,
-});
+type Props = {
+  file: UploadResponse;
+  onClick?: () => void;
+};
 
-export default function UploadThumbnail({ file }: { file: UploadResponse }) {
+export default function UploadThumbnail({ file, onClick }: Props) {
+  function handleClick(ev: React.MouseEvent) {
+    ev.preventDefault();
+    if (onClick) {
+      return onClick();
+    } else {
+      location.href = file.url;
+    }
+  }
+
   if (file.fileType === "image") {
-    const thumbnailUrl = `${file.url}?tr=w-200,h-200,crop=force,fo-auto`;
+    // const thumbnailUrl = `${file.filePath}?tr=w-200,h-200,crop=force,fo-auto`;
     return (
-      <a href={file.url} target="_blank">
-        <Image
-          src={thumbnailUrl}
+      <a onClick={handleClick} target="_blank">
+        <MyImage
+          src={file.filePath}
           alt="photo"
           width={200}
           height={200}
-          className="object-cover rounded"
+          aicrop={true}
+          className="object-cover rounded cursor-pointer"
           style={{ width: 60, height: 60 }}
         />
       </a>

@@ -16,7 +16,7 @@ export default function Header({ session }: { session: Session | null }) {
   return (
     <header
       className="p-4 border-b border-gray-200 flex items-center
-    justify-between"
+    justify-between h-18"
     >
       <Link
         className="text-emerald-600 font-bold text-2xl

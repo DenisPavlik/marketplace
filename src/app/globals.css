@@ -6,7 +6,7 @@ select,
 textarea {
   @apply w-full border border-gray-100 p-2 rounded-md;
 }
-form label {
+label {
   @apply text-xs text-gray-600 font-bold uppercase block mt-4 mb-1;
 }
 

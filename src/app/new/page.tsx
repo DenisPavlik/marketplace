@@ -8,6 +8,7 @@ import AdTextInputs from "@/components/AdTextInputs";
 import LocationPicker from "@/components/LocationPicker";
 import { createAd } from "../actions/adActions";
 import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 const defLoc = {
   lat: 40.781499583285544,
@@ -36,8 +37,10 @@ export default function NewAdPage() {
       formData.set("location", JSON.stringify(location));
       formData.set("files", JSON.stringify(files));
       const res = await createAd(formData);
+
       if (res.success) {
         toast.success("Ad created successfully! ✅");
+        redirect("/ad/" + res.data?.id);
       } else {
         toast.error(`Something went wrong: ${res.message} ❌`);
       }
