@@ -1,17 +1,5 @@
-import { UploadResponse } from "imagekit/dist/libs/interfaces";
 import { Model, model, models, Schema } from "mongoose";
-import { Location } from "../../types/imagekit";
-
-type Ad = {
-  userEmail: string;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  contact: string;
-  files: UploadResponse[];
-  location: Location;
-};
+import { Ad } from "../../types/ad";
 
 const adSchema = new Schema<Ad>(
   {

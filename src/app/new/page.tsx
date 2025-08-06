@@ -30,6 +30,14 @@ export default function NewAdPage() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (files.length === 0) {
+      toast.error("Please upload at least one image.");
+      return;
+    }
+    if (location.lat === defLoc.lat && location.lng === defLoc.lng) {
+      toast.error("Please set your location.");
+      return;
+    }
     setIsLoading(true);
     try {
       const form = e.currentTarget;

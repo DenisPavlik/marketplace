@@ -15,7 +15,7 @@ import Link from "next/link";
 export default function Header({ session }: { session: Session | null }) {
   return (
     <header
-      className="p-4 border-b border-gray-200 flex items-center
+      className="p-4 border-b shadow-sm border-gray-200 flex items-center
     justify-between h-18"
     >
       <Link

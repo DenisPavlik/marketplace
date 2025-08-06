@@ -11,7 +11,7 @@ const imageKitLoader = ({
   src: string;
   width: number;
   height?: number;
-  quality?: number;
+  quality?: number | undefined;
   aicrop?: boolean;
 }) => {
   if (src[0] === "/") src = src.slice(1);
@@ -38,17 +38,17 @@ type MyImageProps = ImageProps & {
   height?: number;
 };
 
-const MyImage = ({aicrop, ...rest}: MyImageProps) => {
+const MyImage = ({aicrop, width, height, ...rest}: MyImageProps) => {
   return (
     <Image
-      loader={(args) =>
-        imageKitLoader({
-          ...args,
-          width: rest.width,
-          height: rest.height,
-          aicrop,
-        })
-      }
+      loader={args => imageKitLoader({
+        ...args,
+        width,
+        height,
+        aicrop
+      })}
+      width={width}
+      height={height}
       {...rest}
     />
   );

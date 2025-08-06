@@ -39,8 +39,8 @@ export default function Gallery({ files }: { files: UploadResponse[] }) {
           <MyImage
             src={activeFile.filePath}
             alt="bg"
-            width={1000}
-            height={1000}
+            width={2000}
+            height={2000}
             className="object-cover opacity-20 blur w-full h-full"
           />
         </div>
@@ -72,13 +72,14 @@ export default function Gallery({ files }: { files: UploadResponse[] }) {
           </>
         )}
       </div>
-      <div className="p-4 flex items-center justify-center gap-4 z-10">
+      <div className="p-4 flex items-center justify-center gap-4 relative z-10">
         {files.map((file) => (
-          <UploadThumbnail
-            onClick={() => setActiveFile(file)}
+          <div
             key={file.fileId}
-            file={file}
-          />
+            className="size-14 cursor-pointer rounded overflow-hidden"
+          >
+            <UploadThumbnail onClick={() => setActiveFile(file)} file={file} />
+          </div>
         ))}
       </div>
     </>

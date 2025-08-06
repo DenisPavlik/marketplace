@@ -18,17 +18,14 @@ export default function UploadThumbnail({ file, onClick }: Props) {
   }
 
   if (file.fileType === "image") {
-    // const thumbnailUrl = `${file.filePath}?tr=w-200,h-200,crop=force,fo-auto`;
     return (
       <a onClick={handleClick} target="_blank">
         <MyImage
           src={file.filePath}
           alt="photo"
-          width={200}
-          height={200}
+          width={300}
+          height={300}
           aicrop={true}
-          className="object-cover rounded cursor-pointer"
-          style={{ width: 60, height: 60 }}
         />
       </a>
     );
