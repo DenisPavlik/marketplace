@@ -1,3 +1,6 @@
+import { categories } from "@/libs/helpers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function AdTextInputs() {
   return (
     <>
@@ -10,15 +13,9 @@ export default function AdTextInputs() {
         <option disabled value="0">
           Select category
         </option>
-        <option value="vehicles">🚗 Vehicles</option>
-        <option value="real-estate">🏠 Real Estate</option>
-        <option value="electronics">📱 Electronics</option>
-        <option value="home">🛋️ Home & Furniture</option>
-        <option value="fashion">👕 Fashion</option>
-        <option value="kids">🧸 Kids</option>
-        <option value="pets">🐾 Pets</option>
-        <option value="jobs">💼 Jobs & Services</option>
-        <option value="misc">📦 Misc</option>
+        {categories.map(({key, label}) => (
+          <option key={key} value={key}>{label}</option>
+        ))}
       </select>
       <label htmlFor="descriptionIn">Description</label>
       <textarea name="description" id="descriptionIn" placeholder="description" />
