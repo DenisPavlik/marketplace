@@ -59,31 +59,36 @@ export default function Home() {
         </div>
         <div className="mt-4 flex flex-col gap-0">
           <h1 className="text-xl font-bold">Categories</h1>
-          <label className="has-[:checked]:bg-gray-100 hover:bg-gray-100 rounded-md p-4 duration-300
-          cursor-pointer !m-0 !flex !items-center !gap-2">
+          <label className="category">
             <input
               type="radio"
               value="all"
               onChange={() => setCategory("all")}
               name="category"
               defaultChecked
+              hidden
             />
-            <FontAwesomeIcon size="xl" icon={faStore} />
+            <FontAwesomeIcon
+              size="xl"
+              icon={faStore}
+              className="p-2 rounded-full text-gray-500"
+            />
             Browse all
           </label>
-          {categories.map(({key, label, icon}) => (
-            <label
-              key={key}
-              className="has-[:checked]:bg-gray-100 rounded-md p-4 duration-300 cursor-pointer
-            !m-0 !flex !items-center !gap-2"
-            >
+          {categories.map(({ key, label, icon }) => (
+            <label key={key} className="category">
               <input
                 type="radio"
                 value={key}
                 name="category"
                 onChange={() => setCategory(key)}
+                hidden
               />
-              <FontAwesomeIcon size="xl" icon={icon} />
+              <FontAwesomeIcon
+                size="xl"
+                icon={icon}
+                className="p-2 rounded-full text-gray-500"
+              />
               {label}
             </label>
           ))}

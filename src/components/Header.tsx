@@ -38,7 +38,7 @@ export default function Header({ session }: { session: Session | null }) {
         <div className="flex gap-4">
           {session?.user ? (
             <>
-              <Link href={"/account"}>
+              <Link href={"/profile"}>
                 <Image
                   src={
                     session.user.image || session.user.name?.charAt(0) || "U"
@@ -67,7 +67,7 @@ export default function Header({ session }: { session: Session | null }) {
           />
         </button>
         {session?.user ? (
-          <Link href={"/account"}>
+          <Link href={"/profile"}>
             <Image
               src={session.user.image || session.user.name?.charAt(0) || "U"}
               alt="avatar"
