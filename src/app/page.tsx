@@ -1,17 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Ad } from "../../types/ad";
 
 import AdCard from "@/components/AdCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faStore } from "@fortawesome/free-solid-svg-icons";
 import { categories } from "@/libs/helpers";
+import CategoryOption from "@/components/CategoryOption";
 
 export default function Home() {
   const [ads, setAds] = useState<Ad[]>([]);
   const [search, setSearch] = useState<string>("");
   const [category, setCategory] = useState<string>("all");
+  const [minPrice, setMinPrice] = useState<string>("");
+  const [maxPrice, setMaxPrice] = useState<string>("");
 
   function useDebounce<T>(value: T, delay = 300): T {
     const [debounced, setDebounced] = useState(value);
@@ -24,18 +27,33 @@ export default function Home() {
   }
 
   const debouncedSearch = useDebounce(search, 300);
+  const debouncedMin = useDebounce(minPrice, 300);
+  const debouncedMax = useDebounce(maxPrice, 300);
+
+  const isPriceRangeValid = useMemo(() => {
+    if (debouncedMin === "" || debouncedMax === "") return true;
+    const min = Number(debouncedMin);
+    const max = Number(debouncedMax);
+    if (Number.isNaN(min) || Number.isNaN(max)) return false;
+    return min <= max;
+  }, [debouncedMin, debouncedMax]);
 
   useEffect(() => {
     const params = new URLSearchParams();
     if (debouncedSearch) params.set("search", debouncedSearch);
     if (category && category !== "all") params.set("category", category);
 
+    if (isPriceRangeValid) {
+      if (debouncedMin !== '') params.set('minPrice', String(Number(debouncedMin)))
+      if (debouncedMax !== '') params.set('maxPrice', String(Number(debouncedMax)))
+    }
+
     fetch(`/api/ads?${params.toString()}`)
       .then((response) => response.json())
       .then((adsDocs) => {
         setAds(adsDocs);
-      });
-  }, [debouncedSearch, category]);
+      }).catch(()=>setAds([]))
+  }, [debouncedSearch, category, isPriceRangeValid, debouncedMin, debouncedMax]);
 
   return (
     <div className="flex w-full h-[calc(100vh-78px)]">
@@ -58,40 +76,47 @@ export default function Home() {
           />
         </div>
         <div className="mt-4 flex flex-col gap-0">
-          <h1 className="text-xl font-bold">Categories</h1>
-          <label className="category">
-            <input
-              type="radio"
-              value="all"
-              onChange={() => setCategory("all")}
-              name="category"
-              defaultChecked
-              hidden
-            />
-            <FontAwesomeIcon
-              size="xl"
-              icon={faStore}
-              className="p-2 rounded-full text-gray-500"
-            />
-            Browse all
-          </label>
+          <h1 className="text-lg font-bold mb-2">Categories</h1>
+          <CategoryOption
+            value="all"
+            label="Browse all"
+            icon={faStore}
+            checked={category === "all"}
+            onChange={setCategory}
+          />
           {categories.map(({ key, label, icon }) => (
-            <label key={key} className="category">
-              <input
-                type="radio"
-                value={key}
-                name="category"
-                onChange={() => setCategory(key)}
-                hidden
-              />
-              <FontAwesomeIcon
-                size="xl"
-                icon={icon}
-                className="p-2 rounded-full text-gray-500"
-              />
-              {label}
-            </label>
+            <CategoryOption
+              key={key}
+              value={key}
+              label={label}
+              icon={icon}
+              checked={category === key}
+              onChange={setCategory}
+            />
           ))}
+        </div>
+        <div className="flex flex-col gap-1 mt-2">
+          <h1 className="text-lg font-bold my-2">Price</h1>
+          <div className="flex items-center gap-2">
+            <input
+              type="number"
+              inputMode="numeric"
+              placeholder="Min"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+            />
+            <span>to</span>
+            <input
+              type="number"
+              inputMode="numeric"
+              placeholder="Max"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+            />
+          </div>
+          {!isPriceRangeValid && (
+            <p className="text-sm text-red-600">Min must be ≤ Max</p>
+          )}
         </div>
       </div>
       <div className="w-3/4 grow px-8 bg-gray-100">
