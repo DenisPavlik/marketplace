@@ -9,6 +9,7 @@ import {
   faSackDollar,
   faShirt,
 } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 export const categories = [
   { key: "vehicles", label: "Vehicles", icon: faCar },

@@ -12,3 +12,10 @@ export type Ad = {
   files: UploadResponse[];
   location: Location;
 };
+
+export type AdsFilters = {
+  search: string;
+  category: string;
+  minPrice: string;
+  maxPrice: string;
+};
