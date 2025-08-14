@@ -3,18 +3,16 @@ import { Loader } from "@googlemaps/js-api-loader";
 import { createRef, Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { Location } from "../../types/imagekit";
 
-
-
 export default function LocationPicker({
   location,
-  setLocation
+  setLocation,
 }: {
-  location: Location,
-  setLocation: Dispatch<SetStateAction<Location>>
+  location: Location;
+  setLocation: Dispatch<SetStateAction<Location>>;
 }) {
   const divRef = createRef<HTMLDivElement>();
-  const mapRef = useRef<google.maps.Map | null>(null)
-  const pinRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null)
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const pinRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
 
   async function loadMap() {
     const loader = new Loader({
@@ -53,10 +51,9 @@ export default function LocationPicker({
     if (mapRef.current && pinRef.current) {
       pinRef.current.position = location;
       mapRef.current.setCenter(location);
-      mapRef.current.setZoom(14)
+      mapRef.current.setZoom(14);
     }
   }, [location]);
-
 
   return <div id="map" ref={divRef} className="w-full h-64"></div>;
 }

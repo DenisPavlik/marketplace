@@ -4,8 +4,10 @@ import MyImage from "./MyImage";
 export default function UploadView({ file }: { file: UploadResponse }) {
   if (file.fileType === "image") {
     return (
-      <div className="max-h-[600px] max-w-full mx-auto rounded overflow-hidden
-      flex justify-center items-center">
+      <div
+        className="max-h-[600px] max-w-full mx-auto rounded overflow-hidden
+      flex justify-center items-center"
+      >
         <MyImage
           src={file.filePath}
           alt="product photo"

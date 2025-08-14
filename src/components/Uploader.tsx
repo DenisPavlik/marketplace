@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { IKContext, IKUpload } from "imagekitio-react";
 import { IKUploadProps } from "imagekitio-react/dist/types/components/IKUpload/props";
 
@@ -9,8 +9,8 @@ export default function Uploader(props: IKUploadProps) {
         urlEndpoint={process.env.NEXT_PUBLIC_IK_ENDPOINT}
         publicKey={process.env.NEXT_PUBLIC_IK_PUBLIC_KEY}
         authenticator={async () => {
-          const responce = await fetch('/api/imagekit/auth')
-          return await responce.json()
+          const responce = await fetch("/api/imagekit/auth");
+          return await responce.json();
         }}
       >
         <IKUpload {...props} />

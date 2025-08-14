@@ -3,10 +3,6 @@
 import { useState } from "react";
 import { AdsFilters } from "../../types/ad";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faStore } from "@fortawesome/free-solid-svg-icons";
-import { categories } from "@/libs/helpers";
-import CategoryOption from "@/components/CategoryOption";
 import AdsGrid from "@/components/AdsGrid";
 import { useAds } from "@/hooks/useAds";
 import FiltersSidebar from "@/components/FiltersSidebar";

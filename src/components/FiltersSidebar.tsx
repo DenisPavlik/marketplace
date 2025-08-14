@@ -1,20 +1,24 @@
-'use client'
+"use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AdsFilters } from "../../types/ad"
+import { AdsFilters } from "../../types/ad";
 import { faMagnifyingGlass, faStore } from "@fortawesome/free-solid-svg-icons";
 import CategoryOption from "./CategoryOption";
 import { categories } from "@/libs/helpers";
 
 type Props = {
   value: AdsFilters;
-  onChange: (next:AdsFilters) => void;
-  invalidPrice?: boolean
-}
+  onChange: (next: AdsFilters) => void;
+  invalidPrice?: boolean;
+};
 
-export default function FiltersSidebar({value, onChange, invalidPrice} : Props) {
+export default function FiltersSidebar({
+  value,
+  onChange,
+  invalidPrice,
+}: Props) {
   const set = <K extends keyof AdsFilters>(key: K, val: AdsFilters[K]) =>
-    onChange({...value, [key]: val})
+    onChange({ ...value, [key]: val });
 
   return (
     <div className="w-1/4 grow p-4 border-r border-gray-200">
@@ -56,7 +60,6 @@ export default function FiltersSidebar({value, onChange, invalidPrice} : Props) 
         ))}
       </div>
 
-      
       <div className="flex flex-col gap-1 mt-2">
         <h1 className="text-lg font-bold my-2">Price</h1>
         <div className="flex items-center gap-2">
@@ -85,5 +88,5 @@ export default function FiltersSidebar({value, onChange, invalidPrice} : Props) 
         )}
       </div>
     </div>
-  )
+  );
 }

@@ -10,9 +10,8 @@ export default function AdsGrid({
 }: {
   ads: Ad[];
   loading?: boolean;
-error?: string | null;
+  error?: string | null;
 }) {
-
   return (
     <div className="w-3/4 grow px-8 bg-gray-100">
       <h2 className="font-bold text-xl mt-4 mb-6">Latest products</h2>
@@ -38,6 +37,4 @@ error?: string | null;
       </div>
     </div>
   );
-
-
 }

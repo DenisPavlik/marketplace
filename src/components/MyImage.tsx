@@ -38,15 +38,17 @@ type MyImageProps = ImageProps & {
   height?: number;
 };
 
-const MyImage = ({aicrop, width, height, ...rest}: MyImageProps) => {
+const MyImage = ({ aicrop, width, height, ...rest }: MyImageProps) => {
   return (
     <Image
-      loader={args => imageKitLoader({
-        ...args,
-        width,
-        height,
-        aicrop
-      })}
+      loader={(args) =>
+        imageKitLoader({
+          ...args,
+          width,
+          height,
+          aicrop,
+        })
+      }
       width={width}
       height={height}
       {...rest}
