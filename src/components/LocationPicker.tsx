@@ -10,7 +10,7 @@ export default function LocationPicker({
   location: Location;
   setLocation: Dispatch<SetStateAction<Location>>;
 }) {
-  const divRef = createRef<HTMLDivElement>();
+  const divRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
   const pinRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
 

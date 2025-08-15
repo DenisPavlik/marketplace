@@ -5,6 +5,7 @@ import { AdsFilters } from "../../types/ad";
 import { faMagnifyingGlass, faStore } from "@fortawesome/free-solid-svg-icons";
 import CategoryOption from "./CategoryOption";
 import { categories } from "@/libs/helpers";
+import DistancePicker from "./DistancePicker";
 
 type Props = {
   value: AdsFilters;
@@ -87,6 +88,8 @@ export default function FiltersSidebar({
           <p className="text-sm text-red-600">Min must be ≤ Max</p>
         )}
       </div>
+
+      <DistancePicker />
     </div>
   );
 }
