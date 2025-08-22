@@ -1,5 +1,6 @@
 import { Loader } from "@googlemaps/js-api-loader";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Location } from "../../types/imagekit";
 
 const defLoc = {
   lat: 40.781499583285544,
@@ -8,6 +9,8 @@ const defLoc = {
 
 export default function DistancePicker() {
   const divRef = useRef<HTMLDivElement | null>(null);
+  const [radius, setRadius] = useState(10 * 1000)
+  const [center, setCenter] = useState<Location>(defLoc)
 
   useEffect(() => {
     loadmap();
@@ -17,13 +20,15 @@ export default function DistancePicker() {
     const loader = new Loader({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string,
     });
+    const Core = await loader.importLibrary('core')
     const { Map, Circle } = await loader.importLibrary("maps");
     const map = new Map(divRef.current as HTMLDivElement, {
       mapId: "map",
-      center: defLoc,
-      zoom: 5,
+      center,
+      zoom: 8,
       mapTypeControl: false,
       streetViewControl: false,
+      zoomControl: true
     });
     const circle = new Circle({
       map,
@@ -32,10 +37,20 @@ export default function DistancePicker() {
       strokeWeight: 2,
       fillColor: "#FF0000",
       fillOpacity: 0.35,
-      center: defLoc,
-      radius: 100000,
+      center,
+      radius,
       editable: true,
     });
+
+    Core.event.addListener(circle, 'bounds_changed', () => {
+      setRadius(circle.getRadius())
+    });
+    Core.event.addListener(circle, 'center_changed', () => {
+      setCenter(circle.getCenter()?.toJSON() as Location)
+      if (circle.getCenter()) {
+        map.setCenter(circle.getCenter())
+      }
+    })
   }
   return <div className="w-full h-60" ref={divRef}></div>;
 }
