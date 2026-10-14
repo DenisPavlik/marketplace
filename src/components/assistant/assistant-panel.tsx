@@ -305,6 +305,52 @@ function ToolNote({ children, busy = false }: { children: React.ReactNode; busy?
   );
 }
 
+/**
+ * Lets a mouse drag a horizontal strip sideways (touch and trackpads scroll natively).
+ * A click that ends a real drag is swallowed so it doesn't open the card under the pointer.
+ */
+function useDragScroll() {
+  const state = useRef<{ x: number; left: number; moved: boolean } | null>(null);
+  return {
+    onPointerDown(e: React.PointerEvent<HTMLElement>) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      state.current = { x: e.clientX, left: e.currentTarget.scrollLeft, moved: false };
+    },
+    onPointerMove(e: React.PointerEvent<HTMLElement>) {
+      const s = state.current;
+      if (!s) return;
+      // The button was released somewhere we didn't hear about: stop following the mouse.
+      if (!(e.buttons & 1)) {
+        state.current = null;
+        return;
+      }
+      const dx = e.clientX - s.x;
+      if (!s.moved && Math.abs(dx) < 5) return;
+      if (!s.moved) {
+        s.moved = true;
+        e.currentTarget.setPointerCapture(e.pointerId);
+        e.currentTarget.setAttribute("data-dragging", "");
+      }
+      e.currentTarget.scrollLeft = s.left - dx;
+    },
+    onPointerUp(e: React.PointerEvent<HTMLElement>) {
+      e.currentTarget.removeAttribute("data-dragging");
+      // Keep the flag until the click that follows this pointerup has been handled.
+      setTimeout(() => (state.current = null));
+    },
+    onClickCapture(e: React.MouseEvent<HTMLElement>) {
+      if (state.current?.moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    // Without this the browser starts dragging the image or link itself.
+    onDragStart(e: React.DragEvent<HTMLElement>) {
+      e.preventDefault();
+    },
+  };
+}
+
 function closeOnPhone(onNavigate: () => void) {
   if (window.matchMedia("(max-width: 639px)").matches) onNavigate();
 }
@@ -316,10 +362,15 @@ function SearchResults({
   result: { listings: AssistantCard[]; feedUrl: string; moreAvailable: boolean };
   onNavigate: () => void;
 }) {
-  if (result.listings.length === 0) return <ToolNote>No matches on the stoop.</ToolNote>;
+  const drag = useDragScroll();
+  // Dot explains empty searches itself (and usually tries a broader one), so show nothing here.
+  if (result.listings.length === 0) return null;
   return (
     <div className="w-full">
-      <ul className="scroll-fade -mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 pt-1 scrollbar-none">
+      <ul
+        {...drag}
+        className="scroll-fade -mx-4 flex cursor-grab snap-x gap-3 overflow-x-auto px-4 pb-1 pt-1 scrollbar-none active:cursor-grabbing data-[dragging]:snap-none"
+      >
         {result.listings.map((l) => (
           <li key={l.id} className="w-32 shrink-0 snap-start">
             <Link href={`/listings/${l.id}`} onClick={() => closeOnPhone(onNavigate)} className="group block">

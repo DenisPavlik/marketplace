@@ -26,6 +26,14 @@ describe("parseFilters", () => {
     expect(f.radius).toBeNull();
   });
 
+  it("sorts searches by best match and plain browsing by newest", () => {
+    expect(parseFilters({ q: "bike" }).sort).toBe("relevance");
+    expect(parseFilters({}).sort).toBe("newest");
+    // Best match without a search term falls back to newest.
+    expect(parseFilters({ sort: "relevance" }).sort).toBe("newest");
+    expect(parseFilters({ q: "bike", sort: "price_asc" }).sort).toBe("price_asc");
+  });
+
   it("swaps an inverted price range", () => {
     const f = parseFilters({ min: "500", max: "50" });
     expect([f.minPrice, f.maxPrice]).toEqual([50, 500]);
@@ -42,6 +50,11 @@ describe("parseFilters", () => {
 describe("filtersToSearchParams", () => {
   it("omits defaults so the home URL stays clean", () => {
     expect(filtersToSearchParams(parseFilters({})).toString()).toBe("");
+  });
+
+  it("leaves the default sort out of the URL, and keeps an explicit one", () => {
+    expect(filtersToSearchParams(parseFilters({ q: "bike" })).toString()).toBe("q=bike");
+    expect(filtersToSearchParams(parseFilters({ q: "bike", sort: "newest" })).get("sort")).toBe("newest");
   });
 
   it("round-trips through parseFilters", () => {

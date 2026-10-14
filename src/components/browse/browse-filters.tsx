@@ -2,7 +2,7 @@
 
 import { MapPin, SlidersHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState, useTransition, type FormEvent } from "react";
+import { useId, useState, useTransition, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Select } from "@/components/ui/field";
@@ -34,6 +34,8 @@ function FiltersBody({
   pending: boolean;
 }) {
   const [locationOpen, setLocationOpen] = useState(false);
+  // The panel renders twice (sidebar and mobile dialog), so ids must be unique.
+  const sortId = useId();
 
   function submitPrice(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -128,16 +130,16 @@ function FiltersBody({
       </section>
 
       <section>
-        <label htmlFor="sort" className="text-[13px] font-semibold uppercase tracking-wider text-ink-3">
+        <label htmlFor={sortId} className="text-[13px] font-semibold uppercase tracking-wider text-ink-3">
           Sort by
         </label>
         <Select
-          id="sort"
+          id={sortId}
           className="mt-2.5"
           value={filters.sort}
           onChange={(e) => apply({ sort: e.target.value as Sort })}
         >
-          {SORTS.map((s) => (
+          {SORTS.filter((s) => s.value !== "relevance" || filters.q).map((s) => (
             <option key={s.value} value={s.value}>
               {s.label}
             </option>

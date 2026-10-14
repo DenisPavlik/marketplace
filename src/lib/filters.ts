@@ -1,6 +1,7 @@
 import { isCategorySlug, type CategorySlug } from "@/lib/categories";
 
 export const SORTS = [
+  { value: "relevance", label: "Best match" },
   { value: "newest", label: "Newest first" },
   { value: "nearest", label: "Closest first" },
   { value: "price_asc", label: "Price: low to high" },
@@ -8,6 +9,11 @@ export const SORTS = [
 ] as const;
 
 export type Sort = (typeof SORTS)[number]["value"];
+
+/** Searches default to the best matches; plain browsing to the newest listings. */
+export function defaultSort(q: string | null | undefined): Sort {
+  return q ? "relevance" : "newest";
+}
 
 export const RADIUS_OPTIONS = [1, 2, 5, 10, 25, 50] as const;
 
@@ -48,7 +54,9 @@ export function parseFilters(params: RawParams): Filters {
     [minPrice, maxPrice] = [maxPrice, minPrice];
   }
   const sortParam = first(params.sort);
-  const sort = (SORTS.find((s) => s.value === sortParam)?.value ?? "newest") as Sort;
+  const known = SORTS.find((s) => s.value === sortParam)?.value as Sort | undefined;
+  // "Best match" only means something when there's a search term.
+  const sort = known && !(known === "relevance" && !q) ? known : defaultSort(q);
   const lat = num(first(params.lat), -90, 90);
   const lng = num(first(params.lng), -180, 180);
   const hasLocation = lat != null && lng != null;
@@ -74,7 +82,7 @@ export function filtersToSearchParams(f: Partial<Filters>): URLSearchParams {
   if (f.category) p.set("cat", f.category);
   if (f.minPrice != null) p.set("min", String(f.minPrice));
   if (f.maxPrice != null) p.set("max", String(f.maxPrice));
-  if (f.sort && f.sort !== "newest") p.set("sort", f.sort);
+  if (f.sort && f.sort !== defaultSort(f.q)) p.set("sort", f.sort);
   if (
     f.lat != null &&
     f.lng != null &&

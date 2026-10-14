@@ -2,7 +2,7 @@ import "server-only";
 import { tool } from "ai";
 import { z } from "zod";
 import { CATEGORIES, CATEGORY_SLUGS, CONDITIONS, conditionLabel, getCategory } from "@/lib/categories";
-import { DEFAULT_LOCATION, filtersToSearchParams, type Filters, type Sort } from "@/lib/filters";
+import { DEFAULT_LOCATION, defaultSort, filtersToSearchParams, type Filters } from "@/lib/filters";
 import { formatPrice, formatRelativeTime } from "@/lib/format";
 import { getListing, searchListings } from "@/lib/listings";
 
@@ -57,7 +57,7 @@ export const assistantTools = {
       maxPrice: z.number().min(0).optional(),
       near: z.string().max(60).optional().describe("A New York neighborhood or borough, e.g. 'Park Slope' or 'Queens'."),
       radiusMiles: z.number().min(0.5).max(50).optional(),
-      sort: z.enum(["newest", "nearest", "price_asc", "price_desc"]).optional(),
+      sort: z.enum(["relevance", "newest", "nearest", "price_asc", "price_desc"]).optional(),
     }),
     execute: async ({ query, category, minPrice, maxPrice, near, radiusMiles, sort }) => {
       const place = near ? await geocode(near) : null;
@@ -66,7 +66,7 @@ export const assistantTools = {
         category: category ?? null,
         minPrice: minPrice ?? null,
         maxPrice: maxPrice ?? null,
-        sort: (sort ?? (place ? "nearest" : "newest")) as Sort,
+        sort: sort ?? (place ? "nearest" : defaultSort(query?.trim())),
         lat: place?.lat ?? DEFAULT_LOCATION.lat,
         lng: place?.lng ?? DEFAULT_LOCATION.lng,
         locationName: place?.name ?? DEFAULT_LOCATION.name,
@@ -131,7 +131,7 @@ export const assistantTools = {
         category: null,
         minPrice: null,
         maxPrice: null,
-        sort: "newest",
+        sort: "relevance",
         lat: DEFAULT_LOCATION.lat,
         lng: DEFAULT_LOCATION.lng,
         locationName: DEFAULT_LOCATION.name,
@@ -140,7 +140,7 @@ export const assistantTools = {
       let { items } = await searchListings(base);
       // Too few keyword matches: fall back to the same category.
       if (items.filter((i) => i.id !== id).length < 3) {
-        ({ items } = await searchListings({ ...base, q: null, category: getCategory(l.category).slug }));
+        ({ items } = await searchListings({ ...base, q: null, sort: "newest", category: getCategory(l.category).slug }));
       }
       const comps = items.filter((i) => i.id !== id && i.price > 0).slice(0, 10);
       const prices = comps.map((c) => c.price).sort((a, b) => a - b);
