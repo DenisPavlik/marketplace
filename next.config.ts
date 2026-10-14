@@ -1,15 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
-      {
-        hostname: '*.googleusercontent.com',
-      },
-      {
-        hostname: '*.imagekit.io',
-      }
+      { protocol: "https", hostname: "ik.imagekit.io" },
+      { protocol: "https", hostname: "*.googleusercontent.com" },
     ],
   },
 };

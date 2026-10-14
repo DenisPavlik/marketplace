@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# seed upload cache (environment specific)
+scripts/seed/.uploads.json
+
+# local browser automation artifacts
+.playwright-mcp/
+
+# copied from node_modules on install
+public/maplibre/
+
+# Playwright output
+/test-results/
+/playwright-report/
