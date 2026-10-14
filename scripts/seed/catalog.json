@@ -1,0 +1,1032 @@
+{
+  "sellers": [
+    {
+      "key": "maya",
+      "name": "Maya Chen",
+      "bio": "Interior designer in Park Slope. I rotate furniture more than I should, so there's usually something good here. Smoke-free home.",
+      "home": "Park Slope, Brooklyn"
+    },
+    {
+      "key": "marcus",
+      "name": "Marcus Reed",
+      "bio": "Bed-Stuy native, DJ on weekends. Mostly selling bikes, audio gear and records I've doubled up on. Quick replies, fair prices.",
+      "home": "Bed-Stuy, Brooklyn"
+    },
+    {
+      "key": "priya",
+      "name": "Priya Nair",
+      "bio": "Software engineer in Astoria. I upgrade my setup too often, so my old gear goes here. Everything wiped, tested and boxed if I still have the box.",
+      "home": "Astoria, Queens"
+    },
+    {
+      "key": "tomas",
+      "name": "Tomás Alvarez",
+      "bio": "Line cook and part-time skater in Bushwick. Clearing out the apartment before my lease is up. Evenings and weekends work best for pickup.",
+      "home": "Bushwick, Brooklyn"
+    },
+    {
+      "key": "hannah",
+      "name": "Hannah Goldberg",
+      "bio": "Retired teacher on the Upper West Side, slowly downsizing after 30 years in the same apartment. Doorman building, easy pickup.",
+      "home": "Upper West Side, Manhattan"
+    },
+    {
+      "key": "kofi",
+      "name": "Kofi Mensah",
+      "bio": "Dad of two in Crown Heights. Our kids outgrow things faster than we can store them. Happy to help carry down to your car.",
+      "home": "Crown Heights, Brooklyn"
+    },
+    {
+      "key": "lena",
+      "name": "Lena Petrova",
+      "bio": "Photographer in Greenpoint, moving to Berlin in November. Selling what won't fit in two suitcases. Priced to go.",
+      "home": "Greenpoint, Brooklyn"
+    }
+  ],
+  "listings": [
+    {
+      "key": "orange-armchair",
+      "seller": "maya",
+      "title": "Vintage mid-century armchair, orange floral upholstery",
+      "price": 180,
+      "category": "home",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 2,
+      "description": "1960s lounge chair with walnut legs and the original orange-and-cream floral fabric. Frame is solid and doesn't wobble; there's light fading on the left arm and a small snag on the back. About 30\" wide, 33\" deep, 34\" tall. Pillow not included. Pickup only, ground-floor brownstone near 7th Ave.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6727,
+      "lng": -73.9871,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/XCOZ3XTV7M.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/house-interior-XCOZ3XTV7M",
+          "license": "cc0",
+          "creator": "Tim Wright",
+          "title": "House Interior"
+        }
+      ]
+    },
+    {
+      "key": "round-strap-mirror",
+      "seller": "maya",
+      "title": "Round black metal mirror with rope hanger, 20\"",
+      "price": 45,
+      "category": "home",
+      "condition": "like_new",
+      "status": "active",
+      "daysAgo": 5,
+      "description": "20-inch round mirror with a thin matte black frame and jute rope strap. Hung on one wall for a year, no scratches on the glass. Swapping it for something bigger in the same spot. Cash or Venmo.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6683,
+      "lng": -73.9847,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/JRHSFSKQZQ.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/mirror-livingroom-JRHSFSKQZQ",
+          "license": "cc0",
+          "creator": "Studio 7042",
+          "title": "Mirror Livingroom"
+        }
+      ]
+    },
+    {
+      "key": "blue-loveseat",
+      "seller": "maya",
+      "title": "Light blue upholstered loveseat, 52\"",
+      "price": 220,
+      "category": "home",
+      "condition": "good",
+      "status": "reserved",
+      "daysAgo": 8,
+      "description": "Compact two-seater in a pale aqua linen blend, 52\" wide, wood legs. It fits through narrow brownstone doorways, which is why I bought it. Cushions are firm, no stains, one tiny pull on the front edge. Pillows and throw not included. Someone is coming Saturday; I'll update if it falls through.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6738,
+      "lng": -73.9793,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/TQNWBTLHLY.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/couch-furniture-TQNWBTLHLY",
+          "license": "cc0",
+          "creator": "Kristin Hardwick",
+          "title": "Couch Furniture"
+        }
+      ]
+    },
+    {
+      "key": "canon-ae1",
+      "seller": "maya",
+      "title": "Canon AE-1 film camera with 50mm f/1.8 lens",
+      "price": 240,
+      "category": "hobbies",
+      "condition": "good",
+      "status": "sold",
+      "daysAgo": 14,
+      "description": "Canon AE-1 with the FD 50mm f/1.8. Fresh battery, meter reads accurately and the shutter doesn't squeal. Light seals were replaced last year. Shot two rolls of Portra on it this summer with no issues. Neck strap included.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6757,
+      "lng": -73.9864,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/40NFQPDNVE.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/camera-lens-40NFQPDNVE",
+          "license": "cc0",
+          "creator": "Mitchell Hollander",
+          "title": "Camera Lens"
+        }
+      ]
+    },
+    {
+      "key": "teal-yoga-mat",
+      "seller": "maya",
+      "title": "Teal yoga mat with carry strap, 4mm",
+      "price": 15,
+      "category": "sports",
+      "condition": "like_new",
+      "status": "active",
+      "daysAgo": 1,
+      "description": "Standard 68\" x 24\" mat, 4mm thick, with an elastic carry strap. Used maybe ten times before I switched to a cork one. Wiped down and rolled. I can leave it with the doorman at my studio on Vanderbilt.",
+      "locationName": "Prospect Heights, Brooklyn",
+      "lat": 40.6766,
+      "lng": -73.9748,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA0L2JzOTctaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/11515790/teal-yoga-mat",
+          "license": "cc0",
+          "creator": null,
+          "title": "Teal yoga mat"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA0L2JzMTMxLWltYWdlLmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/11524307/rolled-and-tied-teal-yoga-mat",
+          "license": "cc0",
+          "creator": null,
+          "title": "Rolled tied teal yoga mat"
+        }
+      ]
+    },
+    {
+      "key": "corona-typewriter",
+      "seller": "maya",
+      "title": "L.C. Smith & Corona portable typewriter, 1930s",
+      "price": 160,
+      "category": "hobbies",
+      "condition": "fair",
+      "status": "active",
+      "daysAgo": 11,
+      "description": "Maroon Corona portable from the 1930s. All keys strike and the carriage advances, but the ribbon is dry and needs replacing. Some wear to the paint on the front edge, as you'd expect. Heavy, so pickup only. Great as a working piece or as decor.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6676,
+      "lng": -73.9813,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/ATWWYVKEYM.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/typewriter-table-ATWWYVKEYM",
+          "license": "cc0",
+          "creator": "Kristin Hardwick",
+          "title": "Typewriter Table"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/X1ZQDHV72T.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/typewriter-table-X1ZQDHV72T",
+          "license": "cc0",
+          "creator": "Kristin Hardwick",
+          "title": "Typewriter Table"
+        }
+      ]
+    },
+    {
+      "key": "glitter-sneakers",
+      "seller": "maya",
+      "title": "White rhinestone low-top sneakers, women's 7.5",
+      "price": 30,
+      "category": "fashion",
+      "condition": "like_new",
+      "status": "active",
+      "daysAgo": 4,
+      "description": "White canvas low-tops covered in small rhinestones, women's US 7.5. Wore them once to a wedding reception. No missing stones that I can find, soles are clean. Satin laces included.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6653,
+      "lng": -73.985,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/U20YIXFQBC.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/sneakers-shoes-U20YIXFQBC",
+          "license": "cc0",
+          "creator": "Kristin Hardwick",
+          "title": "Sneakers Shoes"
+        }
+      ]
+    },
+    {
+      "key": "free-picture-frames",
+      "seller": "maya",
+      "title": "Free: two large empty picture frames",
+      "price": 0,
+      "category": "misc",
+      "condition": null,
+      "status": "active",
+      "daysAgo": 0,
+      "description": "Two empty frames, no glass or backing. The wood one is about 30\" x 40\", the sage green one about 20\" x 28\". Good for a project or a gallery wall. On my stoop until they're gone, first come first served.",
+      "locationName": "Park Slope, Brooklyn",
+      "lat": 40.6728,
+      "lng": -73.9809,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/0UGJSGMQJL.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/picture-frames-0UGJSGMQJL",
+          "license": "cc0",
+          "creator": "Kristin Hardwick",
+          "title": "Picture Frames"
+        }
+      ]
+    },
+    {
+      "key": "black-single-speed",
+      "seller": "marcus",
+      "title": "Black steel road bike, converted single speed, 56cm",
+      "price": 260,
+      "category": "sports",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 3,
+      "description": "Vintage steel frame, 56cm, converted to single speed with a new chain and freewheel this spring. Drop bars, sprung leather saddle, both brakes work. Fits riders about 5'9\" to 6'0\". Tires hold air fine. Test ride welcome if you leave ID.",
+      "locationName": "Bed-Stuy, Brooklyn",
+      "lat": 40.6838,
+      "lng": -73.9407,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/MWL2LBZHBB.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/bicycle-road-MWL2LBZHBB",
+          "license": "cc0",
+          "creator": "donterase",
+          "title": "Bicycle Road"
+        }
+      ]
+    },
+    {
+      "key": "dumbbell-set",
+      "seller": "marcus",
+      "title": "Spin-lock dumbbell set with 6 extra cast iron plates",
+      "price": 55,
+      "category": "sports",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 9,
+      "description": "Pair of chrome spin-lock handles plus cast iron plates, about 40 lb total. Threads are clean and the collars tighten fine. Some surface rust on a couple of plates. Third floor walk-up, I'll bring them down.",
+      "locationName": "Bed-Stuy, Brooklyn",
+      "lat": 40.6909,
+      "lng": -73.9477,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL2lzMTU1ODYtaW1hZ2Uta3d2eWhpbm8uanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5927274/photo-image-public-domain-free-workout",
+          "license": "cc0",
+          "creator": null,
+          "title": "Free gym dumbbell floor photo"
+        }
+      ]
+    },
+    {
+      "key": "technics-turntable",
+      "seller": "marcus",
+      "title": "Technics SL-1200MK5 turntable with Ortofon cartridge",
+      "price": 650,
+      "category": "electronics",
+      "condition": "good",
+      "status": "reserved",
+      "daysAgo": 6,
+      "description": "SL-1200MK5 in silver, Ortofon cartridge on the headshell. Pitch slider and start/stop work as they should, speed is locked on both 33 and 45. Dust cover has scratches, deck itself is clean. Selling because I went digital for gigs. Pending pickup, will relist if it doesn't happen.",
+      "locationName": "Bed-Stuy, Brooklyn",
+      "lat": 40.6909,
+      "lng": -73.9394,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL25zMzI2Mi1pbWFnZS1rd3Z3cDR0aS5qcGc.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5916255/image-background-public-domain-vintage",
+          "license": "cc0",
+          "creator": null,
+          "title": "Free vinyl record turntable image"
+        }
+      ]
+    },
+    {
+      "key": "vinyl-lot",
+      "seller": "marcus",
+      "title": "Lot of about 40 classical and pop LPs",
+      "price": 80,
+      "category": "hobbies",
+      "condition": "fair",
+      "status": "sold",
+      "daysAgo": 21,
+      "description": "Box of roughly 40 records, mostly classical pressings from the 70s plus a Beatles compilation. Sleeves are worn and some have ring wear, but the vinyl I spot-checked plays fine. Selling as a lot only.",
+      "locationName": "Bed-Stuy, Brooklyn",
+      "lat": 40.6853,
+      "lng": -73.9459,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdXB3azYxNjkxNTI3LXdpa2ltZWRpYS1pbWFnZS1rb3dsc3FyOC5qcGc.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/3294100/free-photo-image-beatles-italia-music",
+          "license": "cc0",
+          "creator": null,
+          "title": "close-up stack old vinyl records"
+        }
+      ]
+    },
+    {
+      "key": "leather-messenger",
+      "seller": "marcus",
+      "title": "Brown leather messenger bag, fits 13\" laptop",
+      "price": 95,
+      "category": "fashion",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 12,
+      "description": "Full-grain brown leather messenger with two buckle straps and a padded shoulder pad. Fits a 13-inch laptop plus a camera. Leather is scuffed in the way it should be, all stitching intact. I'm at my studio in Fort Greene most afternoons.",
+      "locationName": "Fort Greene, Brooklyn",
+      "lat": 40.6947,
+      "lng": -73.9762,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/DQCQ6W96UC.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/bag-leather-DQCQ6W96UC",
+          "license": "cc0",
+          "creator": "%C1lvaro%20Serrano",
+          "title": "Bag Leather"
+        }
+      ]
+    },
+    {
+      "key": "macbook-pro-13",
+      "seller": "priya",
+      "title": "MacBook Pro 13\" Retina, 16GB RAM, 512GB SSD",
+      "price": 420,
+      "category": "electronics",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 2,
+      "description": "13-inch MacBook Pro, silver, 16GB RAM and 512GB SSD. Battery cycle count is 312 and health shows normal. Wiped and reset, signed out of iCloud. Small dent on the bottom corner, screen is perfect. Comes with the original charger. Can meet at the Astoria Blvd station.",
+      "locationName": "Astoria, Queens",
+      "lat": 40.7595,
+      "lng": -73.9283,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/F7OLW2SG0C.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/macbook-laptop-F7OLW2SG0C",
+          "license": "cc0",
+          "creator": "Lauren Mancke",
+          "title": "Macbook Laptop"
+        }
+      ]
+    },
+    {
+      "key": "mx-keys",
+      "seller": "priya",
+      "title": "Logitech MX Keys wireless keyboard, graphite",
+      "price": 55,
+      "category": "electronics",
+      "condition": "like_new",
+      "status": "active",
+      "daysAgo": 4,
+      "description": "MX Keys in graphite, US layout. Backlight works, pairs with three devices. I moved to a mechanical board so this has been in a drawer. USB-C cable included.",
+      "locationName": "Astoria, Queens",
+      "lat": 40.7686,
+      "lng": -73.9223,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/9EJ2TLEMN1.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/keyboard-keys-9EJ2TLEMN1",
+          "license": "cc0",
+          "creator": "FOCA Stock",
+          "title": "Keyboard Keys"
+        }
+      ]
+    },
+    {
+      "key": "imac-21",
+      "seller": "priya",
+      "title": "Apple iMac 21.5\", 8GB RAM, keyboard and mouse included",
+      "price": 300,
+      "category": "electronics",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 10,
+      "description": "21.5-inch iMac, 8GB RAM, 1TB drive. Freshly reset to macOS. Comes with the wired keyboard and Magic Mouse. Screen has no dead pixels. It's at my office in LIC, so pickup there on weekdays. Heavy-ish, bring a bag.",
+      "locationName": "Long Island City, Queens",
+      "lat": 40.7484,
+      "lng": -73.9457,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/959IURDRGJ.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/seo-computer-959IURDRGJ",
+          "license": "cc0",
+          "creator": "Serpstat",
+          "title": "Seo Computer"
+        }
+      ]
+    },
+    {
+      "key": "floor-lamp",
+      "seller": "priya",
+      "title": "IKEA Hektar floor lamp, dark grey",
+      "price": 25,
+      "category": "home",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 7,
+      "description": "Hektar floor lamp, adjustable shade, about 69\" tall. Works fine, a few small scuffs on the base. Bulb included. Pickup only, 2nd floor walk-up off 30th Ave.",
+      "locationName": "Astoria, Queens",
+      "lat": 40.7648,
+      "lng": -73.9178,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s2MjExODE5MS13aWtpbWVkaWEtaW1hZ2Uta293YW5iOGsuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/3282197/free-photo-image-wall-green-cc0",
+          "license": "cc0",
+          "creator": null,
+          "title": "floor lamp pastel green wall"
+        }
+      ]
+    },
+    {
+      "key": "cat-condo",
+      "seller": "priya",
+      "title": "Beige carpeted cat condo with scratching posts",
+      "price": 35,
+      "category": "pets",
+      "condition": "fair",
+      "status": "active",
+      "daysAgo": 15,
+      "description": "Two-post cat tree with a covered cubby, about 3 feet tall. Sisal on the posts is worn from use, carpet has been vacuumed. Our cat prefers the couch, so it's going. Fits in a hatchback.",
+      "locationName": "Astoria, Queens",
+      "lat": 40.7629,
+      "lng": -73.9229,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZmwxNjg2MDc2NDgwOS1pbWFnZS1rcHFvNHI1dS5qcGc.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/3372506/free-photo-image-abyssinian-animal-cat",
+          "license": "cc0",
+          "creator": null,
+          "title": "Cat walking cat condo"
+        }
+      ]
+    },
+    {
+      "key": "tennis-racket",
+      "seller": "priya",
+      "title": "Adult tennis racket, grip 2, with a new ball",
+      "price": 40,
+      "category": "sports",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 18,
+      "description": "Adult racket, grip size 2, strung last season. Some paint chips on the frame from scraping serves. I'll throw in a fresh ball. I can meet at Astoria Park courts.",
+      "locationName": "Astoria, Queens",
+      "lat": 40.7684,
+      "lng": -73.9221,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL3NrMzg4MS1pbWFnZS1rd3Z1bHUyYS5qcGc.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5902842/photo-image-public-domain-green-free",
+          "license": "cc0",
+          "creator": null,
+          "title": "Free tennis racket ball photo"
+        }
+      ]
+    },
+    {
+      "key": "bushwick-room",
+      "seller": "tomas",
+      "title": "Room in 3BR, Bushwick — $1,350/mo",
+      "price": 1350,
+      "category": "property",
+      "condition": null,
+      "status": "active",
+      "daysAgo": 1,
+      "description": "Sunny room in a 3BR railroad off the Jefferson L, available Nov 1. Room fits a queen, has a closet and a window facing the courtyard. Two roommates, both in their late 20s, quiet on weeknights. Utilities split, around $80 a month. Bed frame can stay if you want it.",
+      "locationName": "Bushwick, Brooklyn",
+      "lat": 40.6987,
+      "lng": -73.9204,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/12B5400E80.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/bedroom-bed-12B5400E80",
+          "license": "cc0",
+          "creator": "Jay Mantri",
+          "title": "Bedroom Bed"
+        }
+      ]
+    },
+    {
+      "key": "cruiser-skateboard",
+      "seller": "tomas",
+      "title": "Wooden cruiser skateboard, 36\", red wheels",
+      "price": 70,
+      "category": "sports",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 5,
+      "description": "Oak-veneer cruiser, about 36 inches, soft red wheels that eat up rough pavement. Bearings spin fine, trucks are a bit loose but adjustable. Headphones not included. Can meet near Maria Hernandez Park.",
+      "locationName": "Bushwick, Brooklyn",
+      "lat": 40.6969,
+      "lng": -73.9268,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/POOPFTHYVF.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/wood-skateboard-POOPFTHYVF",
+          "license": "cc0",
+          "creator": "Jens Mahnke",
+          "title": "Wood Skateboard"
+        }
+      ]
+    },
+    {
+      "key": "red-vespa",
+      "seller": "tomas",
+      "title": "Red Vespa LX 50 scooter, 2,900 miles",
+      "price": 1800,
+      "category": "vehicles",
+      "condition": "good",
+      "status": "reserved",
+      "daysAgo": 9,
+      "description": "2012 Vespa LX 50, red, 2,900 miles. Clear title in my name, registered in NY. New battery and rear tire this year, rear rack included. Starts first try. It's parked at a friend's garage in Williamsburg. Holding it for a buyer this week.",
+      "locationName": "Williamsburg, Brooklyn",
+      "lat": 40.7048,
+      "lng": -73.9596,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZnJ2ZXNwYV9yb2xsZXJfbW90b3Jfc2Nvb3Rlcl8xMC1pbWFnZS1rejJkeWUwcy5qcGc.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/6111561/red-vespa-location-unknown-july-2016",
+          "license": "cc0",
+          "creator": null,
+          "title": "Red Vespa, Location unknown, July"
+        }
+      ]
+    },
+    {
+      "key": "industrial-stools",
+      "seller": "tomas",
+      "title": "Pair of black metal swivel stools, adjustable",
+      "price": 60,
+      "category": "home",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 13,
+      "description": "Two black steel stools with round seats that spin up and down to adjust height, about 24 to 30 inches. Sturdy, some paint wear on the footrests. Selling as a pair.",
+      "locationName": "Bushwick, Brooklyn",
+      "lat": 40.6894,
+      "lng": -73.9245,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/INNBV70JFF.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/stools-books-INNBV70JFF",
+          "license": "cc0",
+          "creator": "Breather",
+          "title": "Stools Books"
+        }
+      ]
+    },
+    {
+      "key": "free-boxes",
+      "seller": "tomas",
+      "title": "Free: flattened moving boxes, about 25",
+      "price": 0,
+      "category": "misc",
+      "condition": null,
+      "status": "active",
+      "daysAgo": 0,
+      "description": "About 25 flattened cardboard boxes in mixed sizes, tied in bundles. Some have tape residue but all are usable. Take them all, please. Leaving them by my building door tonight, or message me and I'll hold them.",
+      "locationName": "Bushwick, Brooklyn",
+      "lat": 40.6896,
+      "lng": -73.924,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcHgxMTA5MTIwLWltYWdlLWt3dndiZnE2LmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5913766/image-background-public-domain-wall",
+          "license": "cc0",
+          "creator": null,
+          "title": "Free pile cardboard boxes recycling"
+        }
+      ]
+    },
+    {
+      "key": "gold-wall-mirror",
+      "seller": "hannah",
+      "title": "Ornate gilt wall mirror, antique, 22\"",
+      "price": 280,
+      "category": "home",
+      "condition": "fair",
+      "status": "active",
+      "daysAgo": 6,
+      "description": "Heavy cast metal mirror with gilt finish, figures and a lion mask at the bottom. Roughly 22 inches tall. The mirror glass itself has the foxing and silvering loss you see in old pieces. It hung in my hallway for decades. Doorman building on West End Ave, I can have it waiting downstairs.",
+      "locationName": "Upper West Side, Manhattan",
+      "lat": 40.7886,
+      "lng": -73.977,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/MV6XJEPOIF.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/old-mirror-MV6XJEPOIF",
+          "license": "cc0",
+          "creator": "Matt Bango",
+          "title": "Old Mirror"
+        }
+      ]
+    },
+    {
+      "key": "jones-sewing-machine",
+      "seller": "hannah",
+      "title": "Antique Jones hand-crank sewing machine",
+      "price": 150,
+      "category": "hobbies",
+      "condition": "fair",
+      "status": "active",
+      "daysAgo": 17,
+      "description": "Black Jones Family hand-crank machine with gold decals, on its original wooden base. The wheel turns and the needle moves; I haven't sewn with it in years so it may need oiling. Decals are in good shape for the age. Lid is missing. Very heavy.",
+      "locationName": "Upper West Side, Manhattan",
+      "lat": 40.7854,
+      "lng": -73.9789,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/3HY6QI9UFT.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/sewing-machine-3HY6QI9UFT",
+          "license": "cc0",
+          "creator": "Clem Onojeghuo",
+          "title": "Sewing Machine"
+        }
+      ]
+    },
+    {
+      "key": "rattan-chairs",
+      "seller": "hannah",
+      "title": "Two rattan hoop chairs and teak side table",
+      "price": 190,
+      "category": "home",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 20,
+      "description": "Pair of round rattan chairs on black metal legs plus a small slatted teak table. They lived on my daughter's covered porch for one summer and came back to me. Rug not included. Sold as a set.",
+      "locationName": "Upper West Side, Manhattan",
+      "lat": 40.7842,
+      "lng": -73.9702,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/ZHZOIIFITB.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/patio-furniture-ZHZOIIFITB",
+          "license": "cc0",
+          "creator": "Tarren Bailey",
+          "title": "Patio Furniture"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/JXUTRUCEDK.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/patio-furniture-JXUTRUCEDK",
+          "license": "cc0",
+          "creator": "Tarren Bailey",
+          "title": "Patio Furniture"
+        }
+      ]
+    },
+    {
+      "key": "wooden-train",
+      "seller": "hannah",
+      "title": "Small wooden toy train set, 4 engines",
+      "price": 18,
+      "category": "kids",
+      "condition": "like_new",
+      "status": "active",
+      "daysAgo": 24,
+      "description": "Four little wooden engines with red wheels and the card they came with. Bought for my grandson, who has decided he prefers trucks. Solid wood, no small loose parts. Suitable for ages 3 and up.",
+      "locationName": "Upper West Side, Manhattan",
+      "lat": 40.7888,
+      "lng": -73.9741,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcHgxMDIzNzcwLWltYWdlLWt3eXJqcDVqLmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5964423/free-public-domain-cc0-photo",
+          "license": "cc0",
+          "creator": null,
+          "title": null
+        }
+      ]
+    },
+    {
+      "key": "duck-boots",
+      "seller": "hannah",
+      "title": "L.L.Bean duck boots, women's 8",
+      "price": 65,
+      "category": "fashion",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 3,
+      "description": "Classic L.L.Bean boots, tan leather uppers with brown rubber bottoms, women's size 8. Worn two winters, kept clean and dry. Unlined, so wear a thick sock. Laces are original.",
+      "locationName": "Upper West Side, Manhattan",
+      "lat": 40.7831,
+      "lng": -73.9727,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/O23M9PJ1WX.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/brown-leather-O23M9PJ1WX",
+          "license": "cc0",
+          "creator": "David Lezcano",
+          "title": "Brown Leather"
+        }
+      ]
+    },
+    {
+      "key": "walnut-dining-table",
+      "seller": "hannah",
+      "title": "Round walnut dining table and matching chair",
+      "price": 320,
+      "category": "home",
+      "condition": "good",
+      "status": "sold",
+      "daysAgo": 30,
+      "description": "36-inch round table in walnut with one matching spindle-back chair. Minor surface marks on the top, nothing deep. Legs unscrew for transport. Sold, thank you all.",
+      "locationName": "Upper West Side, Manhattan",
+      "lat": 40.783,
+      "lng": -73.9768,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/0DH6S6OU6Q.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/wooden-chair-0DH6S6OU6Q",
+          "license": "cc0",
+          "creator": "Ryan Riggins",
+          "title": "Wooden Chair"
+        }
+      ]
+    },
+    {
+      "key": "red-tricycle",
+      "seller": "kofi",
+      "title": "Red kids tricycle, ages 2-4",
+      "price": 25,
+      "category": "kids",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 2,
+      "description": "Classic red trike with chrome handlebars and streamers taken off. Wheels roll straight, seat is adjustable. Some scuffs on the step plate. My youngest moved to a balance bike. Helmet not included.",
+      "locationName": "Crown Heights, Brooklyn",
+      "lat": 40.6753,
+      "lng": -73.9405,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/TIDFS7VDFA.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/kids-bike-TIDFS7VDFA",
+          "license": "cc0",
+          "creator": "Matt Bango",
+          "title": "Kids Bike"
+        }
+      ]
+    },
+    {
+      "key": "balance-bike",
+      "seller": "kofi",
+      "title": "Wooden balance bike, adjustable seat",
+      "price": 50,
+      "category": "kids",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 5,
+      "description": "Birch plywood balance bike with air tires and an adjustable seat, for roughly ages 2 to 5. Both of our kids learned on it. Wood has some scratches, tires hold air. Good way to skip training wheels.",
+      "locationName": "Crown Heights, Brooklyn",
+      "lat": 40.6701,
+      "lng": -73.94,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvYTAxMC1tYXJrdXNzcGlza2Utb2N0MTgtMDE0LmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/519911/free-photo-image-childhood-bike-bicycle",
+          "license": "cc0",
+          "creator": "Markus Spiske",
+          "title": "Abandoned bike dark forest"
+        }
+      ]
+    },
+    {
+      "key": "rattan-bassinet",
+      "seller": "kofi",
+      "title": "Rattan bassinet with mattress pad",
+      "price": 90,
+      "category": "kids",
+      "condition": "good",
+      "status": "reserved",
+      "daysAgo": 8,
+      "description": "Vintage-style rattan bassinet on four legs with a fitted mattress pad, about 33\" long. Smoke-free, pet-free home. Pad cover has been washed. On hold for a neighbor until Thursday.",
+      "locationName": "Crown Heights, Brooklyn",
+      "lat": 40.6735,
+      "lng": -73.9389,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/SITUKGWGWJ.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/baby-crib-SITUKGWGWJ",
+          "license": "cc0",
+          "creator": "Matt Bango",
+          "title": "Baby Crib"
+        }
+      ]
+    },
+    {
+      "key": "dog-bed",
+      "seller": "kofi",
+      "title": "Blue dog bed with horse print, medium",
+      "price": 20,
+      "category": "pets",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 11,
+      "description": "Medium bolster bed, about 24\" x 20\", navy canvas with a white horse print. Cover is machine washable and was just washed. Our dachshund mix has graduated to the sofa.",
+      "locationName": "Crown Heights, Brooklyn",
+      "lat": 40.6661,
+      "lng": -73.9478,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHg2MTMzNDAtaW1hZ2Uta3d5cDJoYTkuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5948755/free-public-domain-cc0-photo",
+          "license": "cc0",
+          "creator": null,
+          "title": null
+        }
+      ]
+    },
+    {
+      "key": "folding-ebike",
+      "seller": "kofi",
+      "title": "White folding e-bike, 20\" wheels, rack battery",
+      "price": 650,
+      "category": "vehicles",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 4,
+      "description": "Folding electric bike with 20-inch wheels, rear-rack battery and front and rear lights. Gets about 25 miles a charge on pedal assist. Folds small enough for a closet. Charger included, receipt available. My wife's sister has it in Prospect Heights, pickup there.",
+      "locationName": "Prospect Heights, Brooklyn",
+      "lat": 40.6753,
+      "lng": -73.972,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL2ZyZm9sZGFibGVfZWxlY3RyaWNfYmlrZV8yNTB3LWltYWdlLWt5YmJrNXNhLmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/6024688/bicycle-free-public-domain-cc0-photo",
+          "license": "cc0",
+          "creator": null,
+          "title": "Bicycle. Free public domain CC0"
+        }
+      ]
+    },
+    {
+      "key": "fuji-x100",
+      "seller": "kofi",
+      "title": "Fujifilm X100T, silver, with strap",
+      "price": 520,
+      "category": "electronics",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 16,
+      "description": "Silver X100T with the 23mm f/2 lens. Shutter count around 18k. Two batteries, charger and a leather strap. Small scuff on the top plate, glass is clean. Selling because I only shoot with my phone now that I'm chasing kids.",
+      "locationName": "Crown Heights, Brooklyn",
+      "lat": 40.6659,
+      "lng": -73.9369,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/KKZNNSXYKL.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/camera-lens-KKZNNSXYKL",
+          "license": "cc0",
+          "creator": "NeONBRAND",
+          "title": "Camera Lens"
+        }
+      ]
+    },
+    {
+      "key": "moto-jacket",
+      "seller": "lena",
+      "title": "Black quilted leather moto jacket, women's S",
+      "price": 120,
+      "category": "fashion",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 3,
+      "description": "Real leather moto with quilted shoulders and silver zips, women's small. Soft and broken in, no tears, lining intact. Fits slightly cropped. Moving abroad and it won't fit in the suitcase.",
+      "locationName": "Greenpoint, Brooklyn",
+      "lat": 40.7349,
+      "lng": -73.9537,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/D11DDX294F.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/people-female-D11DDX294F",
+          "license": "cc0",
+          "creator": "Matthew Henry",
+          "title": "People Female"
+        }
+      ]
+    },
+    {
+      "key": "cube-bookcase",
+      "seller": "lena",
+      "title": "Large black cubby bookcase, 6 x 8 grid",
+      "price": 150,
+      "category": "home",
+      "condition": "fair",
+      "status": "active",
+      "daysAgo": 9,
+      "description": "Big painted black bookcase, about 9 feet wide and 7 feet tall, 48 cubbies. It comes apart into three sections. Some chipped paint on the edges. You'll need a van and a friend. Books and objects not included.",
+      "locationName": "Greenpoint, Brooklyn",
+      "lat": 40.7323,
+      "lng": -73.9528,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/14B430281B.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/bookshelf-shelves-14B430281B",
+          "license": "cc0",
+          "creator": "Jay Mantri",
+          "title": "Bookshelf Shelves"
+        }
+      ]
+    },
+    {
+      "key": "parlor-guitar",
+      "seller": "lena",
+      "title": "Acoustic parlor guitar, natural finish",
+      "price": 85,
+      "category": "hobbies",
+      "condition": "fair",
+      "status": "active",
+      "daysAgo": 7,
+      "description": "Small-bodied acoustic, great for couch playing or travel. Plays in tune, action is a bit high. Some wear on the top and a few dings on the edges. I'll leave the strings on. Stored at my friend's place near McCarren Park.",
+      "locationName": "Williamsburg, Brooklyn",
+      "lat": 40.7131,
+      "lng": -73.9576,
+      "images": [
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/LBCPMZCQPT.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/acoustic-guitar-LBCPMZCQPT",
+          "license": "cc0",
+          "creator": "Pawel Kadysz",
+          "title": "Acoustic Guitar"
+        }
+      ]
+    },
+    {
+      "key": "marshall-headphones",
+      "seller": "lena",
+      "title": "Marshall Major II wired headphones, black",
+      "price": 40,
+      "category": "electronics",
+      "condition": "good",
+      "status": "active",
+      "daysAgo": 12,
+      "description": "Marshall Major II on-ear headphones with the coiled cable. Sound is great, pads are a bit worn but not peeling. The headband folds. Can meet at the Nassau Ave G stop.",
+      "locationName": "Greenpoint, Brooklyn",
+      "lat": 40.7276,
+      "lng": -73.9545,
+      "images": [
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL2ZyZWVyYW5nZXBleGVsczAyNjA4LWltYWdlLWt6MmU0NG04LmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/6112674/photo-image-public-domain-black-technology",
+          "license": "cc0",
+          "creator": null,
+          "title": "Marshall Major II headphones, location"
+        }
+      ]
+    }
+  ]
+}
