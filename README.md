@@ -4,7 +4,7 @@
 
 Stoop is named after the New York "stoop sale", where people put things out on their front steps for neighbors to take home. Prices sit on round garage-sale stickers, each tinted by category.
 
-<!-- Live demo: add the Vercel URL here after deploying -->
+**Live demo: [stoop-market.vercel.app](https://stoop-market.vercel.app)**
 
 > **Try it without signing up:** on the sign-in page choose **Explore with a demo account**. You'll be Maya, a Park Slope seller with listings, saved items and conversations already set up.
 
