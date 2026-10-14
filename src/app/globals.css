@@ -1,27 +1,166 @@
 @import "tailwindcss";
 
-input[type="text"],
-input[type="number"],
-select,
-textarea {
-  @apply w-full border border-gray-100 p-2 rounded-md;
-}
-label {
-  @apply text-xs text-gray-600 font-bold uppercase block mt-4 mb-1;
+@theme {
+  --color-paper: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-ink: #15171c;
+  --color-ink-2: #4a505c;
+  --color-ink-3: #6b7180;
+  --color-line: #e2e4e9;
+  --color-line-strong: #cdd1d8;
+  --color-brand: #ff6b4a;
+  --color-tape: #efe3c2;
+  --color-danger: #c8321f;
+  --color-success: #11805a;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-marker: var(--font-kalam), "Marker Felt", cursive;
+
+  --radius-card: 14px;
+
+  --animate-peel-in: peel-in 420ms cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+  --animate-fade-up: fade-up 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  @keyframes peel-in {
+    from {
+      opacity: 0;
+      transform: scale(0.6) rotate(calc(var(--tilt, 0deg) - 18deg));
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(var(--tilt, 0deg));
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-.solidBtn {
-  @apply bg-emerald-600 text-white border border-emerald-600
-  rounded-sm px-2 py-1 cursor-pointer hover:bg-white hover:text-emerald-600 duration-300;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: "ss01", "tnum" 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: #ffe14d;
+    color: var(--color-ink);
+  }
 }
 
-.outlineBtn {
-  @apply bg-white text-emerald-600 border border-emerald-600
-   rounded-sm px-2 py-1 cursor-pointer hover:bg-emerald-600 hover:text-white duration-300;
+@layer components {
+  /* Expanded Archivo for headlines: the cardboard-sign voice of the brand. */
+  .font-display {
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 125;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+
+  .font-wide {
+    font-variation-settings: "wdth" 112;
+  }
+
+  /*
+   * The signature element: a round garage-sale price sticker.
+   * Color comes from --dot (category), tilt from --tilt (per-listing).
+   */
+  .sticker {
+    --size: 4rem;
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at 32% 28%, rgb(255 255 255 / 0.55), transparent 42%),
+      radial-gradient(circle at 50% 50%, var(--dot) 62%, color-mix(in oklab, var(--dot), #000 9%) 100%);
+    color: var(--color-ink);
+    font-family: var(--font-marker);
+    font-weight: 700;
+    line-height: 1;
+    transform: rotate(var(--tilt, 0deg));
+    box-shadow:
+      0 1px 0 rgb(255 255 255 / 0.6) inset,
+      0 -1px 2px rgb(0 0 0 / 0.08) inset,
+      0 1px 1px rgb(21 23 28 / 0.12),
+      0 4px 10px -2px rgb(21 23 28 / 0.22);
+    transition: transform 260ms cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+
+  .sticker-price {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.04em;
+    letter-spacing: -0.02em;
+  }
+
+  .sticker-currency {
+    font-size: 0.55em;
+    margin-top: 0.12em;
+  }
+
+  .group:hover .sticker,
+  .group:focus-visible .sticker {
+    transform: rotate(calc(var(--tilt, 0deg) * -0.6)) scale(1.06);
+  }
+
+  /* Strip of masking tape with a hand-written note, for reserved/sold items. */
+  .tape {
+    position: absolute;
+    padding: 0.3rem 1.4rem 0.2rem;
+    background: color-mix(in oklab, var(--color-tape) 92%, transparent);
+    color: var(--color-ink);
+    font-family: var(--font-marker);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgb(21 23 28 / 0.18);
+    clip-path: polygon(
+      0 8%, 3% 0, 7% 10%, 11% 2%, 16% 9%, 22% 1%, 30% 8%, 38% 0, 46% 9%, 55% 2%, 63% 10%,
+      72% 1%, 80% 9%, 88% 2%, 94% 10%, 100% 4%, 100% 92%, 96% 100%, 90% 91%, 83% 99%, 75% 90%,
+      67% 100%, 58% 91%, 49% 99%, 41% 90%, 33% 100%, 25% 92%, 17% 100%, 10% 91%, 4% 99%, 0 93%
+    );
+  }
+
+  .field-input {
+    @apply w-full rounded-[10px] border border-line-strong bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-3 transition-colors outline-none hover:border-ink-3 focus:border-ink focus:ring-2 focus:ring-ink/10 disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-danger;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-label.category {
-  @apply has-[:checked]:bg-gray-100 has-[:checked]:*:bg-emerald-600
-            has-[:checked]:*:text-white hover:bg-gray-100 rounded-md p-2 duration-300
-              cursor-pointer !m-0 !flex !items-center !gap-2;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }

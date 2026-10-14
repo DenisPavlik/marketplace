@@ -1,41 +1,53 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo, Kalam } from "next/font/google";
+import { Toaster } from "sonner";
+import { Header } from "@/components/header/header";
 import "./globals.css";
-import Header from "@/components/Header";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
-import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
   subsets: ["latin"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const kalam = Kalam({
   subsets: ["latin"],
+  weight: "700",
+  variable: "--font-kalam",
+  display: "swap",
 });
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "Marketplace",
-  description: "Find what you need",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Stoop — buy and sell with your neighbors",
+    template: "%s · Stoop",
+  },
+  description:
+    "A local marketplace for secondhand finds. Browse what's for sale near you, message sellers in real time, and pick up down the block.",
+  openGraph: { siteName: "Stoop", type: "website" },
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const session = await getServerSession(authOptions);
+export const viewport: Viewport = {
+  themeColor: "#f4f5f7",
+};
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Toaster />
-        <Header session={session} />
-        {children}
+    <html lang="en" className={`${archivo.variable} ${kalam.variable}`}>
+      <body className="min-h-dvh">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main">{children}</main>
+        <Toaster position="bottom-center" toastOptions={{ className: "font-sans" }} />
       </body>
     </html>
   );
