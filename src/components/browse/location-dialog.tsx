@@ -131,7 +131,7 @@ export function LocationDialog({
             )}
           </StoopMap>
         )}
-        <p className="pointer-events-none absolute bottom-2 left-2 rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-ink-2 shadow-sm">
+        <p className="pointer-events-none absolute left-2 top-2 rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-ink-2 shadow-sm">
           Tap the map to move the pin
         </p>
       </div>
