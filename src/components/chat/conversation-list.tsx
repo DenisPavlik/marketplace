@@ -116,9 +116,14 @@ export function InboxPanes({ list, children }: { list: React.ReactNode; children
   const router = useRouter();
   const activeId = useSelectedLayoutSegment();
   const sheetRef = useRef<HTMLElement>(null);
-  // Which thread is sliding out; once the route moves on, nothing is.
-  const [closingId, setClosingId] = useState<string | null>(null);
-  const closing = activeId !== null && closingId === activeId;
+  // Whether the open thread is sliding out. Reset whenever the route moves on, or
+  // reopening the same chat would slide it straight back out.
+  const [closing, setClosing] = useState(false);
+  const [shownId, setShownId] = useState(activeId);
+  if (shownId !== activeId) {
+    setShownId(activeId);
+    setClosing(false);
+  }
 
   useEffect(() => {
     document.documentElement.toggleAttribute("data-thread-open", Boolean(activeId));
@@ -127,7 +132,7 @@ export function InboxPanes({ list, children }: { list: React.ReactNode; children
 
   useEffect(() => {
     if (!activeId) return;
-    const onClose = () => setClosingId(activeId);
+    const onClose = () => setClosing(true);
     window.addEventListener(CLOSE_THREAD_EVENT, onClose);
     const unlock =
       sheetRef.current && window.matchMedia("(max-width: 767px)").matches
