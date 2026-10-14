@@ -16,7 +16,8 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 - **Real-time chat.** Buyer ↔ seller conversations per listing, with live delivery, typing indicators, "Seen" receipts and an unread badge in the header (Supabase Realtime).
 - **Selling flow.** Drag-and-drop multi-photo upload straight to the ImageKit CDN with progress and retry, reorderable photos, a map-based pickup area, and a live preview of the listing card.
 - **Listing lifecycle.** Mark items Available, On hold or Sold, edit, or delete them (photos are cleaned up from the CDN too).
-- **Saved items, seller profiles, "more from this seller".**
+- **Dark mode** that follows the system by default, with a Light/Dark override in Settings (stored in a cookie, so pages render in the right theme with no flash). The map has its own night palette.
+- **Saved items, seller profiles, "more from this seller", profile settings.**
 - **Privacy by design.** Only an approximate pickup area (≈300 m grid) is ever stored, so exact addresses can't leak through the API.
 - Infinite scroll, skeleton loading, empty states, keyboard support, `prefers-reduced-motion`, and a layout that works down to 360 px.
 

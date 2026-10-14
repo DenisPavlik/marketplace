@@ -131,7 +131,7 @@ export function LocationDialog({
             )}
           </StoopMap>
         )}
-        <p className="pointer-events-none absolute left-2 top-2 rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-ink-2 shadow-sm">
+        <p className="pointer-events-none absolute left-2 top-2 rounded-full bg-surface/90 px-2.5 py-1 text-xs font-medium text-ink-2 shadow-sm">
           Tap the map to move the pin
         </p>
       </div>
@@ -147,7 +147,7 @@ export function LocationDialog({
               onClick={() => setDraft((d) => ({ ...d, radius: r }))}
               className={clsx(
                 "h-9 rounded-full px-3.5 text-[13px] font-semibold ring-1 ring-inset transition-colors",
-                draft.radius === r ? "bg-ink text-white ring-ink" : "ring-line-strong hover:ring-ink-3",
+                draft.radius === r ? "bg-ink text-on-ink ring-ink" : "ring-line-strong hover:ring-ink-3",
               )}
             >
               {r ? `${r} mi` : "Anywhere"}

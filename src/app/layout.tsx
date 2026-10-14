@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Kalam } from "next/font/google";
-import { Toaster } from "sonner";
+import { cookies } from "next/headers";
 import { Header } from "@/components/header/header";
+import { ThemedToaster } from "@/components/theme/themed-toaster";
+import { parseThemePref, THEME_COOKIE } from "@/lib/theme";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -32,22 +34,27 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f5f7",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f5f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#101216" },
+  ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const theme = parseThemePref((await cookies()).get(THEME_COOKIE)?.value);
+
   return (
-    <html lang="en" className={`${archivo.variable} ${kalam.variable}`}>
+    <html lang="en" data-theme={theme} className={`${archivo.variable} ${kalam.variable}`}>
       <body className="min-h-dvh">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-on-ink"
         >
           Skip to content
         </a>
         <Header />
         <main id="main">{children}</main>
-        <Toaster position="bottom-center" toastOptions={{ className: "font-sans" }} />
+        <ThemedToaster />
       </body>
     </html>
   );

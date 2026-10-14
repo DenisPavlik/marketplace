@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ChevronDown } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
 export function Field({
@@ -43,12 +44,13 @@ export function Textarea({ className, ...props }: ComponentProps<"textarea">) {
 
 export function Select({ className, ...props }: ComponentProps<"select">) {
   return (
-    <select
-      className={clsx(
-        "field-input appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2315171c%22 stroke-width=%222.5%22><path d=%22m6 9 6 6 6-6%22/></svg>')] bg-[length:12px] bg-[right_14px_center] bg-no-repeat pr-9",
-        className,
-      )}
-      {...props}
-    />
+    <div className={clsx("relative", className)}>
+      <select className="field-input appearance-none pr-9" {...props} />
+      <ChevronDown
+        aria-hidden
+        className="pointer-events-none absolute right-3.5 top-1/2 size-4 -translate-y-1/2 text-ink-2"
+        strokeWidth={2.5}
+      />
+    </div>
   );
 }

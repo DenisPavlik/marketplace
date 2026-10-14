@@ -68,7 +68,7 @@ export function FavoriteButton({
       aria-label={label}
       title={label}
       className={clsx(
-        "grid size-9 place-items-center rounded-full bg-white/90 text-ink shadow-sm backdrop-blur transition-transform hover:scale-110 active:scale-95",
+        "grid size-9 place-items-center rounded-full bg-surface/90 text-ink shadow-sm backdrop-blur transition-transform hover:scale-110 active:scale-95",
         className,
       )}
     >

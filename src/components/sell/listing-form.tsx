@@ -161,7 +161,7 @@ export function ListingForm({
                     key={c.slug}
                     className={clsx(
                       "flex cursor-pointer items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium ring-1 ring-inset transition-colors has-focus-visible:outline-2 has-focus-visible:outline-ink",
-                      values.category === c.slug ? "bg-ink text-white ring-ink" : "bg-surface ring-line-strong hover:ring-ink-3",
+                      values.category === c.slug ? "bg-ink text-on-ink ring-ink" : "bg-surface ring-line-strong hover:ring-ink-3",
                     )}
                   >
                     <input
@@ -190,7 +190,7 @@ export function ListingForm({
                     key={c.value}
                     className={clsx(
                       "cursor-pointer rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors has-focus-visible:outline-2 has-focus-visible:outline-ink",
-                      values.condition === c.value ? "bg-ink text-white" : "hover:bg-paper",
+                      values.condition === c.value ? "bg-ink text-on-ink" : "hover:bg-paper",
                     )}
                   >
                     <input

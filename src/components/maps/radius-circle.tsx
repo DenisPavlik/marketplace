@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo } from "react";
 import { Layer, Source, useMap } from "react-map-gl/maplibre";
+import { useResolvedTheme } from "@/components/theme/use-theme";
 
 type LatLng = { lat: number; lng: number };
 
@@ -27,7 +28,7 @@ export function RadiusCircle({
   id,
   center,
   radiusMeters,
-  color = "#15171c",
+  color,
   fitBounds = false,
 }: {
   id: string;
@@ -37,6 +38,8 @@ export function RadiusCircle({
   fitBounds?: boolean;
 }) {
   const { current: map } = useMap();
+  const theme = useResolvedTheme();
+  const stroke = color ?? (theme === "dark" ? "#eceef2" : "#15171c");
   const ring = useMemo(() => circlePolygon(center, radiusMeters), [center, radiusMeters]);
 
   useEffect(() => {
@@ -54,8 +57,8 @@ export function RadiusCircle({
 
   return (
     <Source id={id} type="geojson" data={{ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [ring] } }}>
-      <Layer id={`${id}-fill`} type="fill" paint={{ "fill-color": color, "fill-opacity": 0.08 }} />
-      <Layer id={`${id}-line`} type="line" paint={{ "line-color": color, "line-width": 2, "line-opacity": 0.9 }} />
+      <Layer id={`${id}-fill`} type="fill" paint={{ "fill-color": stroke, "fill-opacity": theme === "dark" ? 0.12 : 0.08 }} />
+      <Layer id={`${id}-line`} type="line" paint={{ "line-color": stroke, "line-width": 2, "line-opacity": 0.9 }} />
     </Source>
   );
 }

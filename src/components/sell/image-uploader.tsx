@@ -157,7 +157,7 @@ export function ImageUploader({
 
             {item.status === "uploading" && (
               <div className="absolute inset-0 grid place-items-center bg-ink/30">
-                <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-semibold">
+                <span className="flex items-center gap-1.5 rounded-full bg-surface px-2.5 py-1 text-xs font-semibold">
                   <LoaderCircle className="size-3.5 animate-spin" />
                   {Math.round(item.progress * 100)}%
                 </span>
@@ -169,14 +169,14 @@ export function ImageUploader({
                 onClick={() => retry(item)}
                 className="absolute inset-0 grid place-items-center bg-danger/40 text-white"
               >
-                <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-danger">
+                <span className="flex items-center gap-1.5 rounded-full bg-surface px-2.5 py-1 text-xs font-semibold text-danger">
                   <RotateCcw className="size-3.5" /> Retry
                 </span>
               </button>
             )}
 
             {i === 0 && (
-              <figcaption className="absolute bottom-1.5 left-1.5 rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">
+              <figcaption className="absolute bottom-1.5 left-1.5 rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-on-ink">
                 Cover
               </figcaption>
             )}
@@ -247,7 +247,7 @@ function IconButton({ label, onClick, children }: { label: string; onClick: () =
       aria-label={label}
       title={label}
       onClick={onClick}
-      className="grid size-7 place-items-center rounded-full bg-white/95 text-ink shadow-sm hover:bg-white"
+      className="grid size-7 place-items-center rounded-full bg-surface/95 text-ink shadow-sm hover:bg-surface"
     >
       {children}
     </button>

@@ -59,7 +59,7 @@ export function SellerActions({ listingId, status }: { listingId: string; status
             onClick={() => optimistic !== o.value && changeStatus(o.value)}
             className={clsx(
               "h-9 rounded-full text-sm font-semibold transition-colors",
-              optimistic === o.value ? "bg-ink text-white shadow-sm" : "text-ink-2 hover:text-ink",
+              optimistic === o.value ? "bg-ink text-on-ink shadow-sm" : "text-ink-2 hover:text-ink",
             )}
           >
             {o.label}

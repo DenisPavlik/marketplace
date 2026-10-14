@@ -12,6 +12,10 @@
   --color-tape: #efe3c2;
   --color-danger: #c8321f;
   --color-success: #11805a;
+  /* Text on ink-filled controls, and the fixed dark ink printed on stickers and tape. */
+  --color-on-ink: #ffffff;
+  --color-sticker-ink: #15171c;
+  --color-sunken: #e9ebef;
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-marker: var(--font-kalam), "Marker Felt", cursive;
@@ -44,6 +48,53 @@
   }
 }
 
+/*
+ * Dark theme. "system" (no override) follows the OS; an explicit choice is stored in
+ * the stoop-theme cookie and rendered as data-theme on <html> by the server, so there's
+ * no flash on load.
+ */
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-paper: #101216;
+    --color-surface: #191c22;
+    --color-sunken: #0b0d10;
+    --color-ink: #eceef2;
+    --color-ink-2: #b3b8c2;
+    --color-ink-3: #8a909c;
+    --color-line: #262a32;
+    --color-line-strong: #383d47;
+    --color-brand: #ff7a5c;
+    --color-tape: #e6d9b0;
+    --color-danger: #ff6b57;
+    --color-success: #3ccf91;
+    --color-on-ink: #101216;
+    --map-icon-filter: invert(1);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-paper: #101216;
+  --color-surface: #191c22;
+  --color-sunken: #0b0d10;
+  --color-ink: #eceef2;
+  --color-ink-2: #b3b8c2;
+  --color-ink-3: #8a909c;
+  --color-line: #262a32;
+  --color-line-strong: #383d47;
+  --color-brand: #ff7a5c;
+  --color-tape: #e6d9b0;
+  --color-danger: #ff6b57;
+  --color-success: #3ccf91;
+  --color-on-ink: #101216;
+  --map-icon-filter: invert(1);
+  color-scheme: dark;
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -62,7 +113,7 @@
 
   ::selection {
     background: #ffe14d;
-    color: var(--color-ink);
+    color: var(--color-sticker-ink);
   }
 }
 
@@ -94,7 +145,7 @@
     background:
       radial-gradient(circle at 32% 28%, rgb(255 255 255 / 0.55), transparent 42%),
       radial-gradient(circle at 50% 50%, var(--dot) 62%, color-mix(in oklab, var(--dot), #000 9%) 100%);
-    color: var(--color-ink);
+    color: var(--color-sticker-ink);
     font-family: var(--font-marker);
     font-weight: 700;
     line-height: 1;
@@ -129,7 +180,7 @@
     position: absolute;
     padding: 0.3rem 1.4rem 0.2rem;
     background: color-mix(in oklab, var(--color-tape) 92%, transparent);
-    color: var(--color-ink);
+    color: var(--color-sticker-ink);
     font-family: var(--font-marker);
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -152,6 +203,27 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* MapLibre controls follow the theme. */
+.maplibregl-ctrl-group {
+  background: var(--color-surface) !important;
+  box-shadow: 0 0 0 1px var(--color-line) !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top-color: var(--color-line) !important;
+}
+.maplibregl-ctrl button .maplibregl-ctrl-icon,
+.maplibregl-ctrl-attrib-button {
+  filter: var(--map-icon-filter, none);
+}
+.maplibregl-ctrl-attrib {
+  background: color-mix(in oklab, var(--color-surface) 85%, transparent) !important;
+  color: var(--color-ink-2);
+}
+.maplibregl-ctrl-attrib-inner,
+.maplibregl-ctrl-attrib a {
+  color: var(--color-ink-2) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

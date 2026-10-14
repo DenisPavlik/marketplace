@@ -19,7 +19,7 @@ export function Avatar({
   return (
     <span
       className={clsx(
-        "relative inline-grid shrink-0 place-items-center overflow-hidden rounded-full font-bold text-ink ring-1 ring-black/5",
+        "relative inline-grid shrink-0 place-items-center overflow-hidden rounded-full font-bold text-sticker-ink ring-1 ring-black/5",
         className,
       )}
       style={{ width: size, height: size, background: tint, fontSize: size * 0.42 }}

@@ -41,7 +41,7 @@ export default async function LoginPage({
           <input type="hidden" name="next" value={next} />
           <button
             type="submit"
-            className="flex h-12 w-full items-center justify-center gap-3 rounded-full bg-ink text-[15px] font-semibold text-white transition-colors hover:bg-ink/85"
+            className="flex h-12 w-full items-center justify-center gap-3 rounded-full bg-ink text-[15px] font-semibold text-on-ink transition-colors hover:bg-ink/85"
           >
             <GoogleIcon />
             Continue with Google

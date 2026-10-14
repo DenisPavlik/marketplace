@@ -49,7 +49,7 @@ export function Gallery({ images, title }: { images: ListingImageData[]; title: 
         if (e.key === "ArrowRight") go(index + 1);
       }}
     >
-      <div className="relative overflow-hidden rounded-2xl bg-[#e9ebef]">
+      <div className="relative overflow-hidden rounded-2xl bg-sunken">
         <div ref={trackRef} className="flex aspect-[4/3] snap-x snap-mandatory overflow-x-auto scrollbar-none">
           {images.map((img, i) => (
             <div
@@ -73,7 +73,7 @@ export function Gallery({ images, title }: { images: ListingImageData[]; title: 
           <>
             <NavButton side="left" onClick={() => go(index - 1)} />
             <NavButton side="right" onClick={() => go(index + 1)} />
-            <span className="absolute bottom-3 right-3 rounded-full bg-ink/75 px-2.5 py-1 text-xs font-semibold text-white tabular-nums">
+            <span className="absolute bottom-3 right-3 rounded-full bg-ink/75 px-2.5 py-1 text-xs font-semibold text-on-ink tabular-nums">
               {index + 1} / {count}
             </span>
           </>
@@ -118,7 +118,7 @@ function NavButton({ side, onClick }: { side: "left" | "right"; onClick: () => v
       onClick={onClick}
       aria-label={side === "left" ? "Previous photo" : "Next photo"}
       className={clsx(
-        "absolute top-1/2 hidden size-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-ink shadow-md backdrop-blur transition-transform hover:scale-105 sm:grid",
+        "absolute top-1/2 hidden size-11 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-ink shadow-md backdrop-blur transition-transform hover:scale-105 sm:grid",
         side === "left" ? "left-3" : "right-3",
       )}
     >

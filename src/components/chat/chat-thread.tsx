@@ -209,7 +209,7 @@ export function ChatThread({
                     title={new Date(m.created_at).toLocaleString()}
                     className={clsx(
                       "whitespace-pre-wrap rounded-[20px] px-3.5 py-2 text-[15px] leading-snug [overflow-wrap:anywhere]",
-                      mine ? "bg-ink text-white" : "bg-paper text-ink ring-1 ring-inset ring-line",
+                      mine ? "bg-ink text-on-ink" : "bg-paper text-ink ring-1 ring-inset ring-line",
                       mine ? "rounded-br-md" : "rounded-bl-md",
                       m.state === "sending" && "opacity-60",
                       m.state === "failed" && "bg-danger",
@@ -268,7 +268,7 @@ export function ChatThread({
           type="submit"
           disabled={!draft.trim()}
           aria-label="Send message"
-          className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-white transition-opacity disabled:opacity-30"
+          className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-on-ink transition-opacity disabled:opacity-30"
         >
           <ArrowUp className="size-5" strokeWidth={2.5} />
         </button>

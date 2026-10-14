@@ -9,7 +9,7 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold whitespace-nowrap transition-[background-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 select-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-ink text-white hover:bg-ink/85 shadow-[0_1px_0_rgb(255_255_255/0.15)_inset]",
+  primary: "bg-ink text-on-ink hover:bg-ink/85 shadow-[0_1px_0_rgb(255_255_255/0.15)_inset]",
   secondary: "bg-surface text-ink ring-1 ring-inset ring-line-strong hover:ring-ink-3 hover:bg-paper",
   ghost: "text-ink hover:bg-ink/5",
   danger: "bg-surface text-danger ring-1 ring-inset ring-danger/30 hover:bg-danger hover:text-white",

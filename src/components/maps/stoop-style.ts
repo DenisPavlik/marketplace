@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import type { StyleSpecification } from "maplibre-gl";
+import type { ResolvedTheme } from "@/lib/theme";
 
 const BASE_STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 
 type Paint = Record<string, unknown>;
 
-const STREET_LABEL = "#3b404a";
-const AREA_LABEL = "#4a505c";
 
 /** Width that grows with zoom, so streets read clearly at neighborhood scale. */
 const width = (stops: [number, number][], base = 1.5) => [
@@ -22,7 +21,7 @@ const width = (stops: [number, number][], base = 1.5) => [
  * Stoop's palette over OpenFreeMap's Positron style: cool grey land, white
  * streets with enough contrast to read, warm major roads, saturated parks and water.
  */
-const OVERRIDES: Record<string, Paint> = {
+const LIGHT: Record<string, Paint> = {
   background: { "background-color": "#e3e6ea" },
   landuse_residential: { "fill-color": "#dde1e6", "fill-opacity": 1 },
   park: { "fill-color": "#c4e6cd" },
@@ -66,17 +65,59 @@ const OVERRIDES: Record<string, Paint> = {
   boundary_3: { "line-color": "#aab0ba", "line-opacity": 0.5 },
 };
 
+/** Night version: deep slate blocks, readable grey streets, dim amber arterials. */
+const DARK: Record<string, Paint> = {
+  background: { "background-color": "#14171c" },
+  landuse_residential: { "fill-color": "#191d23", "fill-opacity": 1 },
+  park: { "fill-color": "#17301f" },
+  landcover_wood: { "fill-color": "#17301f" },
+  water: { "fill-color": "#13304a" },
+  waterway: { "line-color": "#13304a" },
+  building: { "fill-color": "#22272f", "fill-outline-color": "#2b313a" },
+  road_area_pier: { "fill-color": "#262b33" },
+  road_pier: { "line-color": "#262b33" },
+
+  highway_path: { "line-color": "#2b3039", "line-opacity": 0.8 },
+  highway_minor: { ...LIGHT.highway_minor, "line-color": "#333943" },
+  highway_major_subtle: { "line-color": "#3a404b" },
+  highway_major_casing: { ...LIGHT.highway_major_casing, "line-color": "#5f4c26" },
+  highway_major_inner: { ...LIGHT.highway_major_inner, "line-color": "#4a3e24" },
+  highway_motorway_subtle: { "line-color": "#5f4c26" },
+  highway_motorway_casing: { "line-color": "#80632c" },
+  highway_motorway_inner: { "line-color": "#5c4a26" },
+  highway_motorway_bridge_casing: { "line-color": "#80632c" },
+  highway_motorway_bridge_inner: { "line-color": "#5c4a26" },
+  tunnel_motorway_casing: { "line-color": "#2b3039" },
+  tunnel_motorway_inner: { "line-color": "#1f242b" },
+
+  railway: { "line-color": "#3c424d" },
+  railway_dashline: { "line-color": "#14171c" },
+  railway_transit: { "line-color": "#3c424d" },
+  railway_transit_dashline: { "line-color": "#14171c" },
+  railway_service: { "line-color": "#343a44" },
+  railway_service_dashline: { "line-color": "#14171c" },
+
+  boundary_3: { "line-color": "#4a505c", "line-opacity": 0.6 },
+};
+
+const LABELS: Record<ResolvedTheme, { street: string; area: string; halo: string }> = {
+  light: { street: "#3b404a", area: "#4a505c", halo: "#ffffff" },
+  dark: { street: "#c9ced7", area: "#9aa1ad", halo: "#14171c" },
+};
+
 type AnyLayer = StyleSpecification["layers"][number] & { paint?: Paint };
 
-function recolor(style: StyleSpecification): StyleSpecification {
+function recolor(style: StyleSpecification, theme: ResolvedTheme): StyleSpecification {
+  const overrides = theme === "dark" ? DARK : LIGHT;
+  const labels = LABELS[theme];
   // Highway shields add noise at neighborhood zoom and ship with invalid filters upstream.
   const layers = style.layers
     .filter((layer) => !layer.id.includes("shield"))
     .map((layer) => {
-      const paint: Paint = { ...((layer as AnyLayer).paint ?? {}), ...OVERRIDES[layer.id] };
+      const paint: Paint = { ...((layer as AnyLayer).paint ?? {}), ...overrides[layer.id] };
       if (layer.type === "symbol") {
-        paint["text-color"] = layer.id.startsWith("highway-name") ? STREET_LABEL : AREA_LABEL;
-        paint["text-halo-color"] = "#ffffff";
+        paint["text-color"] = layer.id.startsWith("highway-name") ? labels.street : labels.area;
+        paint["text-halo-color"] = labels.halo;
         paint["text-halo-width"] = 1.4;
       }
       return { ...layer, paint } as StyleSpecification["layers"][number];
@@ -84,35 +125,44 @@ function recolor(style: StyleSpecification): StyleSpecification {
   return { ...style, layers };
 }
 
-let stylePromise: Promise<StyleSpecification> | null = null;
+let basePromise: Promise<StyleSpecification> | null = null;
+const themed = new Map<ResolvedTheme, StyleSpecification>();
 
-function loadStyle(): Promise<StyleSpecification> {
-  stylePromise ??= fetch(BASE_STYLE_URL)
+function loadBase(): Promise<StyleSpecification> {
+  basePromise ??= fetch(BASE_STYLE_URL)
     .then((r) => {
       if (!r.ok) throw new Error(`Map style failed: ${r.status}`);
       return r.json() as Promise<StyleSpecification>;
     })
-    .then(recolor)
     .catch((err) => {
-      stylePromise = null;
+      basePromise = null;
       throw err;
     });
-  return stylePromise;
+  return basePromise;
 }
 
-/** The recolored style, or null while loading / if tiles are unreachable. */
-export function useStoopMapStyle(): { style: StyleSpecification | null; failed: boolean } {
-  const [style, setStyle] = useState<StyleSpecification | null>(null);
+async function loadStyle(theme: ResolvedTheme): Promise<StyleSpecification> {
+  const cached = themed.get(theme);
+  if (cached) return cached;
+  const style = recolor(await loadBase(), theme);
+  themed.set(theme, style);
+  return style;
+}
+
+/** The recolored style for the current theme, or null while loading / if tiles are unreachable. */
+export function useStoopMapStyle(theme: ResolvedTheme): { style: StyleSpecification | null; failed: boolean } {
+  const [state, setState] = useState<{ theme: ResolvedTheme; style: StyleSpecification } | null>(null);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
     let alive = true;
-    loadStyle().then(
-      (s) => alive && setStyle(s),
+    loadStyle(theme).then(
+      (style) => alive && setState({ theme, style }),
       () => alive && setFailed(true),
     );
     return () => {
       alive = false;
     };
-  }, []);
-  return { style, failed };
+  }, [theme]);
+  // Keep showing the previous theme's style until the new one is ready.
+  return { style: state?.style ?? null, failed };
 }

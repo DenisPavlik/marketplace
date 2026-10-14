@@ -40,8 +40,8 @@ function Chip({ href, active, children }: { href: string; active: boolean; child
       className={clsx(
         "flex h-9 items-center gap-2 rounded-full px-3.5 text-[13px] font-semibold transition-colors",
         active
-          ? "bg-ink text-white"
-          : "bg-surface text-ink ring-1 ring-inset ring-line hover:ring-line-strong hover:bg-white",
+          ? "bg-ink text-on-ink"
+          : "bg-surface text-ink ring-1 ring-inset ring-line hover:ring-line-strong hover:bg-surface",
       )}
     >
       {children}

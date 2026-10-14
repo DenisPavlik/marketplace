@@ -50,7 +50,7 @@ export function LocationField({
           {value && <FlyTo lat={value.lat} lng={value.lng} zoom={14} />}
         </StoopMap>
         {!value && (
-          <p className="pointer-events-none absolute inset-x-0 top-3 mx-auto w-fit rounded-full bg-white/95 px-3 py-1 text-xs font-semibold shadow-sm">
+          <p className="pointer-events-none absolute inset-x-0 top-3 mx-auto w-fit rounded-full bg-surface/95 px-3 py-1 text-xs font-semibold shadow-sm">
             Tap the map where buyers can pick up
           </p>
         )}

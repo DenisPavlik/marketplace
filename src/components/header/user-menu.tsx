@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, LogOut, Store, User } from "lucide-react";
+import { Heart, LogOut, Settings, Store, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Avatar } from "@/components/avatar";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 import { signOut } from "@/app/actions/auth";
 import type { Viewer } from "@/lib/auth";
 
@@ -29,6 +30,7 @@ export function UserMenu({ viewer }: { viewer: Viewer }) {
     { href: `/u/${viewer.id}`, label: "Your profile", icon: User },
     { href: "/selling", label: "Your listings", icon: Store },
     { href: "/saved", label: "Saved", icon: Heart },
+    { href: "/settings", label: "Settings", icon: Settings },
   ];
 
   return (
@@ -46,7 +48,7 @@ export function UserMenu({ viewer }: { viewer: Viewer }) {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-[calc(100%+8px)] z-50 w-60 animate-fade-up overflow-hidden rounded-2xl bg-surface p-1.5 shadow-xl ring-1 ring-black/5"
+          className="absolute right-0 top-[calc(100%+8px)] z-50 w-60 animate-fade-up overflow-hidden rounded-2xl bg-surface p-1.5 shadow-xl ring-1 ring-line"
         >
           <p className="truncate px-3 pb-2 pt-2.5 text-sm font-semibold">{viewer.display_name}</p>
           {items.map(({ href, label, icon: Icon }) => (
@@ -61,6 +63,9 @@ export function UserMenu({ viewer }: { viewer: Viewer }) {
               {label}
             </Link>
           ))}
+          <div className="mt-1 border-t border-line px-1.5 pb-1 pt-2.5">
+            <ThemeSwitcher compact />
+          </div>
           <form action={signOut} className="mt-1 border-t border-line pt-1">
             <button
               type="submit"

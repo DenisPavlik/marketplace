@@ -4,6 +4,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { setWorkerUrl } from "maplibre-gl";
 import Map, { NavigationControl, type MapProps } from "react-map-gl/maplibre";
 import { useStoopMapStyle } from "@/components/maps/stoop-style";
+import { useResolvedTheme } from "@/components/theme/use-theme";
 
 // Copied to /public by scripts/copy-maplibre-worker.mjs on install.
 if (typeof window !== "undefined") setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
@@ -14,7 +15,7 @@ export function StoopMap({
   zoomControl = true,
   ...props
 }: Omit<MapProps, "mapStyle"> & { zoomControl?: boolean }) {
-  const { style, failed } = useStoopMapStyle();
+  const { style, failed } = useStoopMapStyle(useResolvedTheme());
 
   if (failed) {
     return (
@@ -42,5 +43,5 @@ export function StoopMap({
 }
 
 export function PinMarker() {
-  return <span className="block size-5 rounded-full border-[3px] border-white bg-ink shadow-md" />;
+  return <span className="block size-5 rounded-full border-[3px] border-surface bg-ink shadow-md" />;
 }
