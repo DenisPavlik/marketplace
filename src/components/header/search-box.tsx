@@ -43,7 +43,7 @@ export function SearchBox({ className }: { className?: string }) {
         placeholder="Search bikes, couches, cribs…"
         autoComplete="off"
         enterKeyHint="search"
-        className="h-11 w-full rounded-full bg-surface pl-10 pr-10 text-[15px] ring-1 ring-inset ring-line outline-none transition-shadow placeholder:text-ink-3 hover:ring-line-strong focus:ring-2 focus:ring-ink [&::-webkit-search-cancel-button]:hidden"
+        className="h-11 w-full rounded-full bg-surface pl-10 pr-10 text-base ring-1 sm:text-[15px] ring-inset ring-line outline-none transition-shadow placeholder:text-ink-3 hover:ring-line-strong focus:ring-2 focus:ring-ink [&::-webkit-search-cancel-button]:hidden"
       />
       {value && (
         <button

@@ -100,6 +100,12 @@ export function ConversationList({ conversations, userId }: { conversations: Con
 /** On small screens the inbox shows either the list or the open thread. */
 export function InboxPanes({ list, children }: { list: React.ReactNode; children: React.ReactNode }) {
   const activeId = useSelectedLayoutSegment();
+
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-thread-open", Boolean(activeId));
+    return () => document.documentElement.removeAttribute("data-thread-open");
+  }, [activeId]);
+
   return (
     <div className="mx-auto grid h-[calc(100dvh-7.5rem)] max-w-[1280px] md:h-[calc(100dvh-4rem)] md:grid-cols-[360px_minmax(0,1fr)] md:px-6 md:py-6">
       <aside
@@ -115,6 +121,9 @@ export function InboxPanes({ list, children }: { list: React.ReactNode; children
         className={clsx(
           "min-h-0 flex-col overflow-hidden bg-surface md:flex md:rounded-r-2xl md:border-l-0 md:ring-1 md:ring-line",
           activeId ? "flex" : "hidden",
+          // Phones: an open chat takes the whole visible screen, like a messaging app,
+          // and shrinks to the space above the keyboard while typing.
+          "max-md:fixed max-md:inset-x-0 max-md:top-[var(--vv-top,0px)] max-md:z-50 max-md:h-[var(--vv-height,100dvh)]",
         )}
       >
         {children}

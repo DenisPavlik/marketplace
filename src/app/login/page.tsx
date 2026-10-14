@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { signInAsDemo, signInWithGoogle } from "@/app/actions/auth";
 import { getUserId } from "@/lib/auth";
+import { StoopScene } from "@/components/stoop-scene";
 
 export const metadata: Metadata = { title: "Sign in" };
 
@@ -20,14 +21,14 @@ export default async function LoginPage({
   if (await getUserId()) redirect(next);
 
   return (
-    <div className="mx-auto grid min-h-[calc(100dvh-4rem)] max-w-5xl items-center gap-12 px-4 py-12 sm:px-6 md:grid-cols-2">
+    <div className="mx-auto grid min-h-[calc(100dvh-4rem)] max-w-6xl items-center gap-10 px-4 py-10 sm:px-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-14">
       <div>
-        <h1 className="font-display text-[clamp(2.2rem,5vw,3.6rem)] leading-[0.95]">
-          Sign in to sell, save and chat.
+        <StoopScene className="mx-auto max-w-[520px] max-md:max-w-[380px]" />
+        <h1 className="mt-8 font-display text-[clamp(2.2rem,5vw,3.4rem)] leading-[0.95]">
+          Pull up a step.
         </h1>
-        <p className="mt-4 max-w-sm text-[17px] leading-relaxed text-ink-2">
-          Browsing is open to everyone. An account lets you post listings, keep a list of saved finds, and message
-          sellers.
+        <p className="mt-4 max-w-md text-[17px] leading-relaxed text-ink-2">
+          Browsing is open to everyone. Sign in to post listings, keep a list of saved finds, and message sellers.
         </p>
       </div>
 

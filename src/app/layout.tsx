@@ -5,6 +5,7 @@ import { Header } from "@/components/header/header";
 import { ThemedToaster } from "@/components/theme/themed-toaster";
 import { RevealObserver } from "@/components/motion/reveal-observer";
 import { Assistant } from "@/components/assistant/assistant";
+import { VisualViewportVars } from "@/components/viewport/visual-viewport";
 import { parseThemePref, THEME_COOKIE } from "@/lib/theme";
 import "./globals.css";
 
@@ -59,6 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main id="main">{children}</main>
         <ThemedToaster />
         <RevealObserver />
+        <VisualViewportVars />
         {/* Dot only shows up once the assistant has an API key. */}
         {process.env.ANTHROPIC_API_KEY && <Assistant />}
       </body>

@@ -7,9 +7,8 @@ import { X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { DotFace, type DotMood } from "@/components/assistant/dot-face";
 
-const AssistantPanel = dynamic(() => import("@/components/assistant/assistant-panel").then((m) => m.AssistantPanel), {
-  ssr: false,
-});
+const loadPanel = () => import("@/components/assistant/assistant-panel");
+const AssistantPanel = dynamic(() => loadPanel().then((m) => m.AssistantPanel), { ssr: false });
 
 export type PageKind = "browse" | "listing" | "sell" | "other";
 
@@ -63,6 +62,13 @@ export function Assistant() {
   const [panelMood, setPanelMood] = useState<DotMood>("idle");
   const [starter, setStarter] = useState<{ text: string; id: number } | null>(null);
 
+  // Fetch the chat panel's code once the page has settled, so the first open animates right away.
+  useEffect(() => {
+    if (hidden) return;
+    const timer = setTimeout(() => void loadPanel(), 1200);
+    return () => clearTimeout(timer);
+  }, [hidden]);
+
   // Offer one tip per kind of page per session, after the visitor has had a moment.
   useEffect(() => {
     const kind = context.kind;
@@ -81,6 +87,12 @@ export function Assistant() {
     setOpen(true);
     if (prompt) setStarter({ text: prompt, id: Date.now() });
   }, []);
+
+  // On phones the panel is a full-screen sheet; keep the page behind it still.
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-dot-open", open);
+    return () => document.documentElement.removeAttribute("data-dot-open");
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;

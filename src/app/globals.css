@@ -265,7 +265,7 @@
   }
 
   .field-input {
-    @apply w-full rounded-[10px] border border-line-strong bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-3 transition-colors outline-none hover:border-ink-3 focus:border-ink focus:ring-2 focus:ring-ink/10 disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-danger;
+    @apply w-full rounded-[10px] border border-line-strong bg-surface px-3.5 py-2.5 text-base text-ink sm:text-[15px] placeholder:text-ink-3 transition-colors outline-none hover:border-ink-3 focus:border-ink focus:ring-2 focus:ring-ink/10 disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-danger;
   }
 
   .confetti-dot {
@@ -338,6 +338,54 @@
 .dot-face[data-mood="talking"] .dot-mouth {
   opacity: 1;
   animation: dot-talk 300ms ease-in-out infinite alternate;
+}
+
+/*
+ * Dot's chat panel. Phones: a sheet that springs up from the bottom. Larger screens:
+ * it grows out of Dot in the corner. @starting-style animates the very first open too.
+ */
+.dot-panel {
+  transition:
+    translate 460ms cubic-bezier(0.32, 0.72, 0, 1),
+    scale 420ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    opacity 220ms ease;
+}
+.dot-panel[data-open="false"] {
+  translate: 0 105%;
+}
+@starting-style {
+  .dot-panel[data-open="true"] {
+    translate: 0 105%;
+  }
+}
+@media (min-width: 640px) {
+  .dot-panel {
+    transform-origin: calc(100% - 2rem) calc(100% + 4rem);
+  }
+  .dot-panel[data-open="false"] {
+    translate: 0 1rem;
+    scale: 0.3;
+    opacity: 0;
+  }
+  @starting-style {
+    .dot-panel[data-open="true"] {
+      translate: 0 1rem;
+      scale: 0.3;
+      opacity: 0;
+    }
+  }
+}
+
+/* Full-screen sheets on phones (Dot, an open chat) freeze the page behind them. */
+@media (max-width: 639px) {
+  :root[data-dot-open] body {
+    overflow: hidden;
+  }
+}
+@media (max-width: 767px) {
+  :root[data-thread-open] body {
+    overflow: hidden;
+  }
 }
 
 /* Dot's corner spot; it steps up above the sticky "Message seller" bar on listings. */

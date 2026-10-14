@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { ArrowRight, ArrowUp, MessageSquarePlus, RotateCcw, Square, X } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { DotFace, type DotMood } from "@/components/assistant/dot-face";
+import { onVisualViewportResize } from "@/components/viewport/visual-viewport";
 import type { AssistantContext, PageKind } from "@/components/assistant/assistant";
 import { ListingImage } from "@/components/listing-image";
 import { CategoryDot, PriceDot } from "@/components/price-dot";
@@ -82,6 +83,16 @@ export function AssistantPanel({
     if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages, status]);
 
+  // When the phone keyboard opens, keep the latest message in view.
+  useEffect(
+    () =>
+      onVisualViewportResize(() => {
+        const el = listRef.current;
+        if (el) el.scrollTop = el.scrollHeight;
+      }),
+    [],
+  );
+
   function send(text: string) {
     const clean = text.trim().slice(0, MAX_CHARS);
     if (!clean || busy) return;
@@ -108,11 +119,13 @@ export function AssistantPanel({
       aria-label="Dot, the shopping assistant"
       aria-hidden={!open}
       inert={!open}
+      data-open={open}
       className={clsx(
-        "fixed z-50 flex flex-col overflow-hidden bg-surface text-ink shadow-2xl ring-1 ring-line transition-[opacity,translate,scale] duration-300 ease-out",
-        "inset-x-0 bottom-0 top-[8dvh] rounded-t-3xl",
-        "sm:inset-auto sm:bottom-28 sm:right-6 sm:h-[min(620px,calc(100dvh-9rem))] sm:w-[400px] sm:origin-bottom-right sm:rounded-3xl",
-        open ? "opacity-100" : "pointer-events-none translate-y-6 opacity-0 sm:scale-95",
+        "dot-panel fixed z-50 flex flex-col overflow-hidden bg-surface text-ink shadow-2xl ring-1 ring-line",
+        // Phones: a sheet sized to the visible area, so the keyboard never covers the input.
+        "inset-x-0 top-[calc(var(--vv-top,0px)+2.5rem)] h-[calc(var(--vv-height,100dvh)-2.5rem)] rounded-t-3xl",
+        "sm:inset-auto sm:bottom-28 sm:right-6 sm:h-[min(620px,calc(100dvh-9rem))] sm:w-[400px] sm:rounded-3xl",
+        !open && "pointer-events-none",
       )}
     >
       <header className="flex items-center gap-3 border-b border-line px-4 py-3">

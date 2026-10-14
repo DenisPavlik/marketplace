@@ -8,6 +8,7 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 import { Avatar } from "@/components/avatar";
 import { ListingImage } from "@/components/listing-image";
 import { PriceDot } from "@/components/price-dot";
+import { onVisualViewportResize } from "@/components/viewport/visual-viewport";
 import { createClient, subscribeAuthed } from "@/lib/supabase/client";
 import { markConversationRead, sendMessage } from "@/app/actions/chat";
 import type { ChatMessage, ConversationSummary } from "@/lib/chat";
@@ -92,6 +93,16 @@ export function ChatThread({
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, otherTyping]);
+
+  // The phone keyboard shrinks the chat; keep the latest message in view.
+  useEffect(
+    () =>
+      onVisualViewportResize(() => {
+        const el = scrollRef.current;
+        if (el) el.scrollTop = el.scrollHeight;
+      }),
+    [],
+  );
 
   function notifyTyping() {
     const now = Date.now();
@@ -246,7 +257,7 @@ export function ChatThread({
           e.preventDefault();
           send();
         }}
-        className="flex items-end gap-2 border-t border-line p-3"
+        className="flex items-end gap-2 border-t border-line p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
       >
         <label htmlFor="chat-input" className="sr-only">
           Message
