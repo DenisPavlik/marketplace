@@ -8,7 +8,8 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 import { Avatar } from "@/components/avatar";
 import { ListingImage } from "@/components/listing-image";
 import { PriceDot } from "@/components/price-dot";
-import { onVisualViewportResize } from "@/components/viewport/visual-viewport";
+import { closeThreadSheet } from "@/components/chat/conversation-list";
+import { pinToBottomOnResize } from "@/components/viewport/visual-viewport";
 import { createClient, subscribeAuthed } from "@/lib/supabase/client";
 import { markConversationRead, sendMessage } from "@/app/actions/chat";
 import type { ChatMessage, ConversationSummary } from "@/lib/chat";
@@ -95,14 +96,7 @@ export function ChatThread({
   }, [messages.length, otherTyping]);
 
   // The phone keyboard shrinks the chat; keep the latest message in view.
-  useEffect(
-    () =>
-      onVisualViewportResize(() => {
-        const el = scrollRef.current;
-        if (el) el.scrollTop = el.scrollHeight;
-      }),
-    [],
-  );
+  useEffect(() => (scrollRef.current ? pinToBottomOnResize(scrollRef.current) : undefined), []);
 
   function notifyTyping() {
     const now = Date.now();
@@ -154,7 +148,7 @@ export function ChatThread({
   return (
     <div className="flex h-full min-h-0 flex-col">
       <header className="flex items-center gap-3 border-b border-line px-3 py-3 sm:px-4">
-        <Link href="/inbox" aria-label="Back to inbox" className="grid size-9 place-items-center rounded-full hover:bg-ink/5 md:hidden">
+        <Link href="/inbox" aria-label="Back to inbox" onClick={closeThreadSheet} className="grid size-9 place-items-center rounded-full hover:bg-ink/5 md:hidden">
           <ArrowLeft className="size-5" />
         </Link>
         <Avatar name={conversation.other.display_name} src={conversation.other.avatar_url} size={38} />
@@ -193,7 +187,7 @@ export function ChatThread({
         </Link>
       )}
 
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-3 py-5 sm:px-5" aria-live="polite">
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-5 sm:px-5" aria-live="polite">
         <ol className="flex flex-col gap-1.5">
           {messages.map((m, i) => {
             const mine = m.sender_id === userId;

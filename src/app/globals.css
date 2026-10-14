@@ -344,19 +344,23 @@
  * Dot's chat panel. Phones: a sheet that springs up from the bottom. Larger screens:
  * it grows out of Dot in the corner. @starting-style animates the very first open too.
  */
+/* Sheets sized to the visual viewport move with the iOS keyboard (see visual-viewport.tsx). */
+@utility keyboard-follow {
+  transition:
+    top var(--kb-duration, 0ms) var(--kb-ease, linear) var(--kb-delay, 0ms),
+    height var(--kb-duration, 0ms) var(--kb-ease, linear) var(--kb-delay, 0ms);
+}
+
 .dot-panel {
   transition:
     translate 460ms cubic-bezier(0.32, 0.72, 0, 1),
     scale 420ms cubic-bezier(0.34, 1.4, 0.64, 1),
-    opacity 220ms ease;
+    opacity 220ms ease,
+    top var(--kb-duration, 0ms) var(--kb-ease, linear) var(--kb-delay, 0ms),
+    height var(--kb-duration, 0ms) var(--kb-ease, linear) var(--kb-delay, 0ms);
 }
 .dot-panel[data-open="false"] {
-  translate: 0 105%;
-}
-@starting-style {
-  .dot-panel[data-open="true"] {
-    translate: 0 105%;
-  }
+  translate: 0 100lvh;
 }
 @media (min-width: 640px) {
   .dot-panel {
@@ -367,24 +371,37 @@
     scale: 0.3;
     opacity: 0;
   }
-  @starting-style {
-    .dot-panel[data-open="true"] {
-      translate: 0 1rem;
-      scale: 0.3;
-      opacity: 0;
-    }
-  }
 }
 
 /* Full-screen sheets on phones (Dot, an open chat) freeze the page behind them. */
 @media (max-width: 639px) {
+  :root[data-dot-open],
   :root[data-dot-open] body {
     overflow: hidden;
   }
 }
 @media (max-width: 767px) {
+  :root[data-thread-open],
   :root[data-thread-open] body {
     overflow: hidden;
+  }
+
+  /* An open chat slides in over the inbox like a pushed screen, and back out. */
+  .thread-sheet {
+    animation: thread-in 420ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .thread-sheet[data-closing] {
+    animation: thread-out 300ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+}
+@keyframes thread-in {
+  from {
+    translate: 100% 0;
+  }
+}
+@keyframes thread-out {
+  to {
+    translate: 100% 0;
   }
 }
 

@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { ArrowRight, ArrowUp, MessageSquarePlus, RotateCcw, Square, X } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { DotFace, type DotMood } from "@/components/assistant/dot-face";
-import { onVisualViewportResize } from "@/components/viewport/visual-viewport";
+import { lockTouchScroll, pinToBottomOnResize } from "@/components/viewport/visual-viewport";
 import type { AssistantContext, PageKind } from "@/components/assistant/assistant";
 import { ListingImage } from "@/components/listing-image";
 import { CategoryDot, PriceDot } from "@/components/price-dot";
@@ -57,6 +57,7 @@ export function AssistantPanel({
     transport,
   });
   const [input, setInput] = useState("");
+  const panelRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const busy = status === "submitted" || status === "streaming";
@@ -74,6 +75,16 @@ export function AssistantPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once per starter
   }, [starter, sendMessage]);
 
+  // The first open mounts the panel; slide it in only once it has painted, or the
+  // first render eats the start of the animation and the panel just pops up.
+  const [painted, setPainted] = useState(false);
+  useEffect(() => {
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => setPainted(true));
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   useEffect(() => {
     if (open) inputRef.current?.focus({ preventScroll: true });
   }, [open]);
@@ -83,15 +94,14 @@ export function AssistantPanel({
     if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages, status]);
 
+  // On phones the panel is a full-screen sheet; the page behind it stays put.
+  useEffect(() => {
+    if (!open || !panelRef.current || !window.matchMedia("(max-width: 639px)").matches) return;
+    return lockTouchScroll(panelRef.current);
+  }, [open]);
+
   // When the phone keyboard opens, keep the latest message in view.
-  useEffect(
-    () =>
-      onVisualViewportResize(() => {
-        const el = listRef.current;
-        if (el) el.scrollTop = el.scrollHeight;
-      }),
-    [],
-  );
+  useEffect(() => (listRef.current ? pinToBottomOnResize(listRef.current) : undefined), []);
 
   function send(text: string) {
     const clean = text.trim().slice(0, MAX_CHARS);
@@ -116,15 +126,17 @@ export function AssistantPanel({
 
   return (
     <section
+      ref={panelRef}
       aria-label="Dot, the shopping assistant"
       aria-hidden={!open}
       inert={!open}
-      data-open={open}
+      data-open={open && painted}
       className={clsx(
         "dot-panel fixed z-50 flex flex-col overflow-hidden bg-surface text-ink shadow-2xl ring-1 ring-line",
         // Phones: a sheet sized to the visible area, so the keyboard never covers the input.
-        "inset-x-0 top-[calc(var(--vv-top,0px)+2.5rem)] h-[calc(var(--vv-height,100dvh)-2.5rem)] rounded-t-3xl",
-        "sm:inset-auto sm:bottom-28 sm:right-6 sm:h-[min(620px,calc(100dvh-9rem))] sm:w-[400px] sm:rounded-3xl",
+        // Its background runs on under the keyboard, which is see-through on iOS.
+        "inset-x-0 top-[calc(var(--vv-top,0px)+2.5rem)] h-[calc(var(--vv-height,100dvh)-2.5rem+100lvh)] rounded-t-3xl pb-[100lvh]",
+        "sm:inset-auto sm:bottom-28 sm:right-6 sm:h-[min(620px,calc(100dvh-9rem))] sm:w-[400px] sm:rounded-3xl sm:pb-0",
         !open && "pointer-events-none",
       )}
     >
@@ -155,7 +167,7 @@ export function AssistantPanel({
         </button>
       </header>
 
-      <div ref={listRef} className="min-h-0 flex-1 overflow-y-auto px-4 py-5" aria-live="polite">
+      <div ref={listRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-5" aria-live="polite">
         {messages.length === 0 ? (
           <div className="flex h-full flex-col justify-end gap-4">
             <div className="max-w-[88%] rounded-[20px] rounded-bl-md bg-paper px-4 py-3 text-[15px] leading-relaxed ring-1 ring-inset ring-line">
