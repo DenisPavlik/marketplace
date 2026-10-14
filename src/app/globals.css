@@ -16,6 +16,8 @@
   --color-on-ink: #ffffff;
   --color-sticker-ink: #15171c;
   --color-sunken: #e9ebef;
+  /* Highlight that sweeps across loading skeletons. */
+  --color-shimmer: #f3f4f6;
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-marker: var(--font-kalam), "Marker Felt", cursive;
@@ -24,6 +26,16 @@
 
   --animate-peel-in: peel-in 420ms cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
   --animate-fade-up: fade-up 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-heart-pop: heart-pop 460ms cubic-bezier(0.3, 1.6, 0.5, 1);
+
+  @keyframes heart-pop {
+    30% {
+      transform: scale(0.72);
+    }
+    65% {
+      transform: scale(1.28);
+    }
+  }
 
   @keyframes peel-in {
     from {
@@ -45,6 +57,37 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+/* Keyframes used by plain CSS classes below (Tailwind only emits @theme keyframes for animate-* utilities). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes confetti {
+  from {
+    opacity: 1;
+    transform: rotate(var(--a)) translateY(-6px) scale(1);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: rotate(var(--a)) translateY(-30px) scale(0.5);
   }
 }
 
@@ -72,6 +115,7 @@
     --color-danger: #ff6b57;
     --color-success: #3ccf91;
     --color-on-ink: #101216;
+    --color-shimmer: #30343d;
     --map-icon-filter: invert(1);
     color-scheme: dark;
   }
@@ -91,6 +135,7 @@
   --color-danger: #ff6b57;
   --color-success: #3ccf91;
   --color-on-ink: #101216;
+  --color-shimmer: #30343d;
   --map-icon-filter: invert(1);
   color-scheme: dark;
 }
@@ -193,8 +238,53 @@
     );
   }
 
+  /* Loading placeholder: a soft highlight sweeps across, left to right. */
+  .skeleton {
+    background: linear-gradient(
+        100deg,
+        var(--color-line) 35%,
+        var(--color-shimmer) 50%,
+        var(--color-line) 65%
+      )
+      0 0 / 250% 100%;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+
+  /*
+   * Entrance: blocks rise into place in a stagger (--i), and a card's price sticker
+   * slaps on a beat after its photo lands. Blocks below the fold are held by
+   * RevealObserver and play the same entrance when they scroll in.
+   */
+  .reveal {
+    animation: rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 55ms);
+  }
+  .reveal .sticker {
+    animation: peel-in 480ms cubic-bezier(0.2, 0.9, 0.3, 1.25) backwards;
+    animation-delay: calc(var(--i, 0) * 55ms + 240ms);
+  }
+
   .field-input {
     @apply w-full rounded-[10px] border border-line-strong bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-3 transition-colors outline-none hover:border-ink-3 focus:border-ink focus:ring-2 focus:ring-ink/10 disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-danger;
+  }
+
+  .confetti-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    margin: -3.5px;
+    box-shadow: 0 0 0 1.5px rgb(0 0 0 / 0.08);
+    border-radius: 9999px;
+    background: var(--c);
+    opacity: 0;
+    animation: confetti 640ms cubic-bezier(0.15, 0.8, 0.3, 1) forwards;
+  }
+
+  /* Fades the edges of a horizontal scroller so it reads as "there's more". */
+  .scroll-fade {
+    mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 2.5rem), transparent);
   }
 
   .scrollbar-none {
@@ -231,6 +321,7 @@
   *::before,
   *::after {
     animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type CSSProperties } from "react";
 import { Avatar } from "@/components/avatar";
 import { ListingImage } from "@/components/listing-image";
 import { createClient, subscribeAuthed } from "@/lib/supabase/client";
@@ -39,8 +39,8 @@ export function ConversationList({ conversations, userId }: { conversations: Con
 
   return (
     <ul className="divide-y divide-line">
-      {conversations.map((c) => (
-        <li key={c.id}>
+      {conversations.map((c, i) => (
+        <li key={c.id} className="reveal" style={{ "--i": Math.min(i, 10) } as CSSProperties}>
           <Link
             href={`/inbox/${c.id}`}
             aria-current={activeId === c.id ? "page" : undefined}
@@ -62,12 +62,10 @@ export function ConversationList({ conversations, userId }: { conversations: Con
                   />
                 )}
               </div>
-              <Avatar
-                name={c.other.display_name}
-                src={c.other.avatar_url}
-                size={26}
-                className="absolute -bottom-1.5 -right-1.5 ring-2 ring-surface"
-              />
+              {/* Avatar is position: relative itself, so a wrapper pins it to the photo's corner. */}
+              <span className="absolute -bottom-1.5 -right-1.5 flex rounded-full ring-2 ring-surface">
+                <Avatar name={c.other.display_name} src={c.other.avatar_url} size={26} />
+              </span>
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline justify-between gap-2">

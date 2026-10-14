@@ -66,6 +66,7 @@ export function InfiniteListings({
             saved={savedIds.has(listing.id)}
             signedIn={signedIn}
             priority={i < 4}
+            index={i}
           />
         ))}
         {pending && Array.from({ length: 4 }, (_, i) => <ListingCardSkeleton key={`s${i}`} />)}

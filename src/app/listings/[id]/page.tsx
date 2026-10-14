@@ -7,6 +7,7 @@ import { Gallery } from "@/components/listing/gallery";
 import { SellerActions } from "@/components/listing/seller-actions";
 import { ShareButton } from "@/components/listing/share-button";
 import { ContactSeller } from "@/components/listing/contact-seller";
+import { StickyContactBar } from "@/components/listing/sticky-contact-bar";
 import { findConversationId } from "@/lib/chat";
 import { AreaMap } from "@/components/listing/area-map";
 import { FavoriteButton } from "@/components/favorite-button";
@@ -60,13 +61,13 @@ export default async function ListingPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-[1280px] px-4 pb-24 pt-5 sm:px-6 sm:pt-8">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-12">
-        <div className="relative lg:sticky lg:top-24 lg:self-start">
+        <div className="reveal relative lg:sticky lg:top-24 lg:self-start">
           <Gallery images={listing.images} title={listing.title} />
           <StatusTape status={listing.status} size="lg" className="!left-2 !top-6" />
         </div>
 
         <div className="flex min-w-0 flex-col gap-6">
-          <div>
+          <div className="reveal [--i:1]">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-ink-3">
               <Link
                 href={`/?cat=${category.slug}`}
@@ -111,9 +112,11 @@ export default async function ListingPage({ params }: Props) {
           </div>
 
           {isOwner ? (
-            <SellerActions listingId={listing.id} status={listing.status} />
+            <div className="reveal [--i:2]">
+              <SellerActions listingId={listing.id} status={listing.status} />
+            </div>
           ) : (
-            <div className="flex flex-col gap-3">
+            <div id="contact" className="reveal flex scroll-mt-24 flex-col gap-3 [--i:2]">
               {seller && (
                 <ContactSeller
                   listingId={listing.id}
@@ -130,7 +133,7 @@ export default async function ListingPage({ params }: Props) {
           )}
 
           {listing.description && (
-            <section>
+            <section className="reveal [--i:3]">
               <h2 className="text-[13px] font-semibold uppercase tracking-wider text-ink-3">Description</h2>
               <p className="mt-2 whitespace-pre-line text-[15px] leading-relaxed text-ink [overflow-wrap:anywhere]">
                 {listing.description}
@@ -138,7 +141,7 @@ export default async function ListingPage({ params }: Props) {
             </section>
           )}
 
-          <section>
+          <section className="reveal [--i:4]">
             <h2 className="text-[13px] font-semibold uppercase tracking-wider text-ink-3">Pickup area</h2>
             <p className="mt-2 flex items-center gap-1.5 text-[15px] font-medium">
               <MapPin className="size-4" aria-hidden />
@@ -150,7 +153,7 @@ export default async function ListingPage({ params }: Props) {
           </section>
 
           {seller && (
-            <section className="flex items-center gap-4 rounded-2xl bg-surface p-4 ring-1 ring-line">
+            <section className="reveal flex items-center gap-4 rounded-2xl bg-surface p-4 ring-1 ring-line [--i:5]">
               <Avatar name={seller.display_name} src={seller.avatar_url} size={52} />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[15px] font-semibold">{seller.display_name}</p>
@@ -166,6 +169,20 @@ export default async function ListingPage({ params }: Props) {
           )}
         </div>
       </div>
+
+      {seller && !isOwner && (
+        <StickyContactBar
+          listing={{ id: listing.id, title: listing.title, price: listing.price, category: listing.category }}
+          label={conversationId ? "Open chat" : `Message ${seller.display_name.split(" ")[0]}`}
+          href={
+            conversationId
+              ? `/inbox/${conversationId}`
+              : userId
+                ? undefined
+                : `/login?next=${encodeURIComponent(`/listings/${listing.id}`)}`
+          }
+        />
+      )}
 
       {seller && (
         <Suspense>
@@ -200,8 +217,8 @@ async function MoreFromSeller({
         </Link>
       </div>
       <ListingGrid>
-        {items.map((item) => (
-          <ListingCard key={item.id} listing={item} saved={saved.has(item.id)} signedIn={Boolean(userId)} />
+        {items.map((item, i) => (
+          <ListingCard key={item.id} listing={item} saved={saved.has(item.id)} signedIn={Boolean(userId)} index={i} />
         ))}
       </ListingGrid>
     </section>

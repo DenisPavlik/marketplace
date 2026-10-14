@@ -2,7 +2,7 @@ import { Suspense, type CSSProperties } from "react";
 import { CategoryBar } from "@/components/browse/category-bar";
 import { BrowseFilters, MobileFiltersButton } from "@/components/browse/browse-filters";
 import { InfiniteListings } from "@/components/browse/infinite-listings";
-import { ListingCardSkeleton, ListingGrid } from "@/components/listing-card";
+import { ListingGridSkeleton } from "@/components/skeletons";
 import { EmptyState } from "@/components/empty-state";
 import { ButtonLink } from "@/components/ui/button";
 import { getCategory } from "@/lib/categories";
@@ -40,7 +40,7 @@ export default async function BrowsePage({
               <MobileFiltersButton filters={filters} />
             </div>
           </div>
-          <Suspense key={query} fallback={<GridSkeleton />}>
+          <Suspense key={query} fallback={<ListingGridSkeleton />}>
             <Results filters={filters} query={query} />
           </Suspense>
         </section>
@@ -103,16 +103,6 @@ function ResultsHeading({ filters }: { filters: Filters }) {
       )}
       <span className="max-sm:block">{where}</span>
     </h2>
-  );
-}
-
-function GridSkeleton() {
-  return (
-    <ListingGrid>
-      {Array.from({ length: 8 }, (_, i) => (
-        <ListingCardSkeleton key={i} />
-      ))}
-    </ListingGrid>
   );
 }
 

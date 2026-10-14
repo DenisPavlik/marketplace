@@ -63,6 +63,7 @@ export default async function ProfilePage({ params }: Props) {
                 signedIn={Boolean(userId)}
                 showFavorite={!isSelf}
                 priority={i < 4}
+                index={i}
               />
             ))}
           </ListingGrid>

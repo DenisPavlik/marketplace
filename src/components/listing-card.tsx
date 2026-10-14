@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { MapPin } from "lucide-react";
 import { ListingImage } from "@/components/listing-image";
 import { PriceDot } from "@/components/price-dot";
@@ -13,19 +14,22 @@ export function ListingCard({
   signedIn,
   priority = false,
   showFavorite = true,
+  index = 0,
 }: {
   listing: ListingSummary;
   saved: boolean;
   signedIn: boolean;
   priority?: boolean;
   showFavorite?: boolean;
+  /** Position in its grid; staggers the entrance animation. */
+  index?: number;
 }) {
   const cover = listing.images[0];
   const distance = formatDistance(listing.distanceKm);
   const place = [listing.locationName, distance].filter(Boolean).join(" · ");
 
   return (
-    <article className="relative">
+    <article className="reveal relative" style={{ "--i": index % 12 } as CSSProperties}>
       <Link href={`/listings/${listing.id}`} className="group block rounded-card outline-offset-4">
         <div className="relative">
           <div className="relative aspect-square overflow-hidden rounded-card bg-line">
@@ -88,9 +92,13 @@ export function ListingGrid({ children }: { children: React.ReactNode }) {
 export function ListingCardSkeleton() {
   return (
     <div aria-hidden>
-      <div className="aspect-square animate-pulse rounded-card bg-line" />
-      <div className="mt-3 h-4 w-3/4 animate-pulse rounded bg-line" />
-      <div className="mt-2 h-3 w-1/2 animate-pulse rounded bg-line" />
+      <div className="relative">
+        <div className="skeleton aspect-square rounded-card" />
+        {/* Blank sticker waiting for its price. */}
+        <div className="absolute -bottom-5 right-2 size-[3.75rem] rounded-full border-4 border-paper bg-line sm:right-3" />
+      </div>
+      <div className="mt-3 h-4 w-3/4 rounded skeleton" />
+      <div className="mt-2 h-3 w-1/2 rounded skeleton" />
     </div>
   );
 }

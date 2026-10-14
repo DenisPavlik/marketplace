@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { SearchBox } from "@/components/header/search-box";
 import { UserMenu } from "@/components/header/user-menu";
 import { InboxLink } from "@/components/header/inbox-link";
+import { HeaderFrame } from "@/components/header/header-frame";
 import { getViewer } from "@/lib/auth";
 import { getUnreadCount } from "@/lib/chat";
 
@@ -13,7 +14,7 @@ export async function Header() {
   const unread = viewer ? await getUnreadCount() : 0;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md">
+    <HeaderFrame>
       <div className="mx-auto flex h-16 max-w-[1440px] items-center gap-4 px-4 sm:px-6">
         <Logo className="shrink-0" />
         <Suspense fallback={<div className="hidden h-11 flex-1 md:block" />}>
@@ -41,6 +42,6 @@ export async function Header() {
           <SearchBox />
         </Suspense>
       </div>
-    </header>
+    </HeaderFrame>
   );
 }

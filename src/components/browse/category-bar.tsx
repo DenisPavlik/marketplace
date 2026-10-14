@@ -11,7 +11,7 @@ export function CategoryBar({ filters }: { filters: Filters }) {
   };
 
   return (
-    <nav aria-label="Categories" className="-mx-4 overflow-x-auto px-4 scrollbar-none sm:-mx-6 sm:px-6">
+    <nav aria-label="Categories" className="scroll-fade -mx-4 overflow-x-auto px-4 scrollbar-none sm:-mx-6 sm:px-6">
       <ul className="flex w-max gap-2 pb-1">
         <li>
           <Chip href={href(null)} active={!filters.category}>

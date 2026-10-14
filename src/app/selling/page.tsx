@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { ListingImage } from "@/components/listing-image";
@@ -32,8 +33,8 @@ export default async function SellingPage() {
         </EmptyState>
       ) : (
         <ul className="mt-8 divide-y divide-line rounded-2xl bg-surface ring-1 ring-line">
-          {listings.map((l) => (
-            <li key={l.id}>
+          {listings.map((l, i) => (
+            <li key={l.id} className="reveal" style={{ "--i": Math.min(i, 10) } as CSSProperties}>
               <Link href={`/listings/${l.id}`} className="group flex items-center gap-4 p-3 sm:p-4 hover:bg-paper/60">
                 <div className="relative size-16 shrink-0 overflow-hidden rounded-xl bg-line sm:size-20">
                   {l.images[0] && (

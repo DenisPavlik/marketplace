@@ -3,6 +3,7 @@ import { Archivo, Kalam } from "next/font/google";
 import { cookies } from "next/headers";
 import { Header } from "@/components/header/header";
 import { ThemedToaster } from "@/components/theme/themed-toaster";
+import { RevealObserver } from "@/components/motion/reveal-observer";
 import { parseThemePref, THEME_COOKIE } from "@/lib/theme";
 import "./globals.css";
 
@@ -56,6 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Header />
         <main id="main">{children}</main>
         <ThemedToaster />
+        <RevealObserver />
       </body>
     </html>
   );

@@ -3,7 +3,7 @@
 import { Heart } from "lucide-react";
 import clsx from "clsx";
 import { usePathname, useRouter } from "next/navigation";
-import { useOptimistic, useTransition } from "react";
+import { useOptimistic, useState, useTransition, type CSSProperties } from "react";
 import { toast } from "sonner";
 import { setFavorite } from "@/app/actions/favorites";
 
@@ -24,6 +24,8 @@ export function FavoriteButton({
   const pathname = usePathname();
   const [optimistic, setOptimistic] = useOptimistic(saved);
   const [, startTransition] = useTransition();
+  // Bumped on every save so the confetti remounts and plays again.
+  const [burst, setBurst] = useState(0);
 
   function toggle() {
     if (!signedIn) {
@@ -31,6 +33,7 @@ export function FavoriteButton({
       return;
     }
     const next = !optimistic;
+    if (next) setBurst((n) => n + 1);
     startTransition(async () => {
       setOptimistic(next);
       const res = await setFavorite(listingId, next);
@@ -54,7 +57,7 @@ export function FavoriteButton({
           className,
         )}
       >
-        <Heart className={clsx("size-4", optimistic && "fill-ink")} strokeWidth={2.25} />
+        <HeartIcon burst={burst} className={clsx("size-4", optimistic && "fill-ink")} />
         {optimistic ? "Saved" : "Save"}
       </button>
     );
@@ -72,7 +75,32 @@ export function FavoriteButton({
         className,
       )}
     >
-      <Heart className={clsx("size-[18px] transition-colors", optimistic && "fill-[#FF4F9A] text-[#FF4F9A]")} strokeWidth={2.25} />
+      <HeartIcon
+        burst={burst}
+        className={clsx("size-[18px] transition-colors", optimistic && "fill-[#FF4F9A] text-[#FF4F9A]")}
+      />
     </button>
+  );
+}
+
+// Sticker colors, so a save throws a little handful of price dots.
+const CONFETTI = ["#FF8AC2", "#FFE14D", "#4FE0A5", "#8F9BFF", "#FFB547", "#5BC2FF", "#FF7A5C"];
+
+function HeartIcon({ burst, className }: { burst: number; className: string }) {
+  return (
+    <span key={burst} className="relative grid place-items-center">
+      <Heart className={clsx(className, burst > 0 && "animate-heart-pop")} strokeWidth={2.25} />
+      {burst > 0 && (
+        <span aria-hidden className="pointer-events-none absolute inset-0">
+          {CONFETTI.map((color, i) => (
+            <span
+              key={color}
+              className="confetti-dot"
+              style={{ "--c": color, "--a": `${(360 / CONFETTI.length) * i + 12}deg` } as CSSProperties}
+            />
+          ))}
+        </span>
+      )}
+    </span>
   );
 }

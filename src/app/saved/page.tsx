@@ -22,8 +22,8 @@ export default async function SavedPage() {
           </EmptyState>
         ) : (
           <ListingGrid>
-            {listings.map((l) => (
-              <ListingCard key={l.id} listing={l} saved signedIn />
+            {listings.map((l, i) => (
+              <ListingCard key={l.id} listing={l} saved signedIn index={i} />
             ))}
           </ListingGrid>
         )}

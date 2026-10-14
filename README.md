@@ -19,7 +19,7 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 - **Dark mode** that follows the system by default, with a Light/Dark override in Settings (stored in a cookie, so pages render in the right theme with no flash). The map has its own night palette.
 - **Saved items, seller profiles, "more from this seller", profile settings.**
 - **Privacy by design.** Only an approximate pickup area (≈300 m grid) is ever stored, so exact addresses can't leak through the API.
-- Infinite scroll, skeleton loading, empty states, keyboard support, `prefers-reduced-motion`, and a layout that works down to 360 px.
+- Infinite scroll, loading skeletons shaped like each page, staggered entrance animations (cards rise in and their price stickers slap on as you scroll), empty states, keyboard support, `prefers-reduced-motion`, and a layout that works down to 360 px, with a header that tucks away on phones and a sticky "Message seller" bar.
 
 ## Tech stack
 
@@ -94,13 +94,13 @@ Enable Google sign-in under **Authentication → Sign In / Providers → Google*
 
 ### Demo data
 
-`scripts/seed/catalog.json` describes the demo sellers and about 40 listings. The seed users live in `auth.users` with deterministic UUIDv5 ids. Then:
+`scripts/seed/catalog.json` describes the demo sellers and about 90 listings. The seed users live in `auth.users` with deterministic UUIDv5 ids. Then:
 
 ```bash
 node --env-file=.env.local scripts/seed/seed.mjs   # uploads photos to ImageKit, writes seed.sql
 ```
 
-and run the generated `scripts/seed/seed.sql`. It's idempotent: re-running it replaces the previous seed rows.
+and run the generated `scripts/seed/seed.sql`. It's idempotent: re-running it updates seed listings in place and only adds seed conversations that are missing. Nothing is deleted, so conversations people started about seed listings survive.
 
 ## Testing
 

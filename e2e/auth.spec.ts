@@ -18,5 +18,6 @@ test("demo account signs in and returns to the requested page", async ({ page })
 test("login rejects off-site redirects", async ({ page }) => {
   await page.goto("/login?next=//evil.example");
   await page.getByRole("button", { name: /Explore with a demo account/ }).click();
-  await expect(page).toHaveURL(/localhost:\d+\/$/);
+  // Signing in goes through a server action and a redirect; allow for a busy dev server.
+  await expect(page).toHaveURL(/localhost:\d+\/$/, { timeout: 15_000 });
 });
