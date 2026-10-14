@@ -1,6 +1,6 @@
 # Stoop
 
-**A local marketplace for secondhand finds**, in the spirit of Facebook Marketplace: browse what neighbors are selling nearby, filter by distance and price, save favorites, and message sellers in real time.
+**A local marketplace for secondhand finds**, in the spirit of Facebook Marketplace: browse what neighbors are selling nearby, filter by distance and price, save favorites, and message sellers in real time. **Dot**, an AI shopping assistant, finds things from a plain-English request, checks whether a price is fair, and drafts listings for sellers.
 
 Stoop is named after the New York "stoop sale", where people put things out on their front steps for neighbors to take home. Prices sit on round garage-sale stickers, each tinted by category.
 
@@ -12,6 +12,7 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 
 ## Features
 
+- **Dot, an AI shopping assistant.** Ask for "a comfy armchair under $200 near Park Slope" and get matching listings as cards; ask "is this a fair price?" on a listing and see it placed on a scale of similar items; describe something you want to sell and get a ready-to-post draft. [More below](#dot-the-shopping-assistant).
 - **Location-aware browsing.** Pick a neighborhood or use your location, then filter within 1–50 miles. Distances and "closest first" sorting come from PostGIS.
 - **Search that forgives.** Postgres full-text search (weighted title > description) plus trigram matching for partial words like "iph".
 - **Filters in the URL.** Category, price range, radius and sort are all query params, so every view is shareable and works with the back button.
@@ -22,6 +23,17 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 - **Saved items, seller profiles, "more from this seller", profile settings.**
 - **Privacy by design.** Only an approximate pickup area (≈300 m grid) is ever stored, so exact addresses can't leak through the API.
 - Infinite scroll, loading skeletons shaped like each page, staggered entrance animations (cards rise in and their price stickers slap on as you scroll), empty states, keyboard support, `prefers-reduced-motion`, and a layout that works down to 360 px, with a header that tucks away on phones and a sticky "Message seller" bar.
+
+## Dot, the shopping assistant
+
+![Dot open on a listing page for a vintage armchair: a price scale from $20 to $280 with the $120 median marked, and Dot's verdict that $180 is a reasonable ask](docs/screenshots/dot.webp)
+
+Dot is a sticker with eyes that follow your cursor, living in the corner of every page. Once per visit it offers a tip in the spirit of Clippy ("It looks like you're eyeing this one. Want to know if the price is fair?").
+
+- **Tools over live data.** The model (Claude Haiku via the AI SDK) answers by calling four server-side tools: `searchListings` (keywords, category, price, neighborhood geocoded with Photon), `getListing`, `priceCheck` (compares against similar listings and returns the low, median and high) and `draftListing`. They read through the same functions the pages use, so Dot can't see anything a visitor can't.
+- **Knows the page you're on.** Each request carries the current listing, so "is this a fair price?" needs no context.
+- **Results as UI, not text.** Search results render as listing cards (drag them sideways with the mouse), the price check as a colored scale, and a draft as a card whose button fills in the sell form.
+- **Guardrails.** Answers are limited to Stoop topics and must cite only what the tools returned. Rate limits live in Postgres: 20 messages per hour per visitor and 400 per day overall, checked by an RPC that only accepts a secret stored in Supabase Vault. Steps per answer are capped, and Dot hides itself when no API key is configured.
 
 ## Screenshots
 
@@ -49,8 +61,9 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 | Images | ImageKit: signed direct uploads, on-the-fly resizing and smart crop |
 | Maps | MapLibre GL + OpenFreeMap tiles, recolored to the brand palette; Photon (OpenStreetMap) geocoding. No API keys needed |
 | Styling | Tailwind CSS v4 with design tokens, Archivo variable font (width axis), Kalam for sticker numerals |
+| AI | Vercel AI SDK with Anthropic Claude Haiku: tool calling, streamed responses, `useChat` on the client |
 | Testing | Vitest (unit), Playwright (end-to-end, desktop and mobile) |
-| Hosting | Vercel, with a daily cron that keeps the free Supabase project awake |
+| Hosting | Vercel, with a cron every three days that keeps the free Supabase project awake |
 
 ## Architecture
 
@@ -58,13 +71,14 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 src/
   app/                 Routes (App Router). Pages are Server Components.
     actions/           Server Actions: listings, favorites, chat, auth
-    api/               ImageKit upload signing, keep-alive cron
+    api/               ImageKit upload signing, keep-alive cron, assistant chat
     inbox/             Two-pane messaging UI (list + thread)
-  components/          UI: browse, sell, listing, chat, maps, primitives
+  components/          UI: browse, sell, listing, chat, maps, assistant, primitives
   lib/
     supabase/          Browser/server clients + session-refreshing proxy
     listings.ts        Server-side data access
     chat.ts            Conversations and messages
+    assistant/         Dot's tools and message types
     filters.ts         URL ⇄ filter state (fully unit tested)
     listing.ts         Zod schemas and row mapping
 supabase/migrations/   SQL schema, RLS policies, RPC functions
@@ -101,6 +115,9 @@ pnpm dev
 | `NEXT_PUBLIC_IK_ENDPOINT`, `NEXT_PUBLIC_IK_PUBLIC_KEY`, `IK_PRIVATE_KEY` | ImageKit → Developer options |
 | `DEMO_USER_EMAIL`, `DEMO_USER_PASSWORD` | Credentials of the seeded demo account |
 | `CRON_SECRET` | Any random string; Vercel sends it to the cron route |
+| `ANTHROPIC_API_KEY` | Anthropic Console → API keys. Without it, Dot stays hidden |
+| `ASSISTANT_RATE_SECRET` | Any random string. Store the same value in Supabase Vault as `assistant_rate_secret` (see the rate-limit migration) |
+| `ASSISTANT_MODEL` | Optional; defaults to `claude-haiku-5-5` |
 
 ### Database
 

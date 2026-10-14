@@ -2,8 +2,8 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/lib/database.types";
 
 /**
- * Free Supabase projects pause after a week without traffic. A daily Vercel Cron
- * hits this route so the live demo never goes to sleep.
+ * Free Supabase projects pause after a week without traffic. A Vercel Cron hits this
+ * route every three days, so even one missed run leaves a day to spare.
  */
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
