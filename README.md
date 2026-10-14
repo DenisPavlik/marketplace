@@ -8,6 +8,8 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 
 > **Try it without signing up:** on the sign-in page choose **Explore with a demo account**. You'll be Maya, a Park Slope seller with listings, saved items and conversations already set up.
 
+![Stoop's browse page: a grid of secondhand listings, each with a round price sticker tinted by category](docs/screenshots/browse.webp)
+
 ## Features
 
 - **Location-aware browsing.** Pick a neighborhood or use your location, then filter within 1–50 miles. Distances and "closest first" sorting come from PostGIS.
@@ -20,6 +22,20 @@ Stoop is named after the New York "stoop sale", where people put things out on t
 - **Saved items, seller profiles, "more from this seller", profile settings.**
 - **Privacy by design.** Only an approximate pickup area (≈300 m grid) is ever stored, so exact addresses can't leak through the API.
 - Infinite scroll, loading skeletons shaped like each page, staggered entrance animations (cards rise in and their price stickers slap on as you scroll), empty states, keyboard support, `prefers-reduced-motion`, and a layout that works down to 360 px, with a header that tucks away on phones and a sticky "Message seller" bar.
+
+## Screenshots
+
+| Listing | Real-time chat |
+| --- | --- |
+| ![Listing page for a red Vespa, with an "On hold" tape, a price sticker, quick-reply chips to message the seller and a map of the pickup area](docs/screenshots/listing.webp) | ![Two-pane inbox with a buyer asking about an armchair; read receipts under the seller's replies](docs/screenshots/chat.webp) |
+
+**On a phone:** browsing, a listing and a conversation.
+
+![Three phone screens: the browse feed, a listing with its price sticker and message box, and a chat thread](docs/screenshots/mobile.webp)
+
+**Dark mode** follows the system, or can be set in Settings.
+
+![The browse page in dark mode; the price stickers stay bright](docs/screenshots/browse-dark.webp)
 
 ## Tech stack
 
