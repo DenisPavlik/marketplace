@@ -70,9 +70,10 @@ export function Assistant() {
   }, [hidden]);
 
   // Offer one tip per kind of page per session, after the visitor has had a moment.
+  // Once they've talked to Dot they know it's here, so the tips stop.
   useEffect(() => {
     const kind = context.kind;
-    if (hidden || open || !TIPS[kind] || readFlag(`dot-tip:${kind}`)) return;
+    if (hidden || open || !TIPS[kind] || readFlag(`dot-tip:${kind}`) || readFlag("dot-used")) return;
     const timer = setTimeout(() => setTip(kind), TIP_DELAY);
     return () => clearTimeout(timer);
   }, [context.kind, hidden, open]);
@@ -83,6 +84,7 @@ export function Assistant() {
   }, [tip]);
 
   const openPanel = useCallback((prompt?: string) => {
+    setFlag("dot-used");
     setMounted(true);
     setOpen(true);
     if (prompt) setStarter({ text: prompt, id: Date.now() });
