@@ -18,7 +18,6 @@ import { conditionLabel, getCategory } from "@/lib/categories";
 import { formatMemberSince, formatPrice, formatRelativeTime } from "@/lib/format";
 import { getListing, getSavedIds, getSellerListings } from "@/lib/listings";
 import { getUserId } from "@/lib/auth";
-import { IK_ENDPOINT } from "@/lib/imagekit";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -30,15 +29,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description =
     `${formatPrice(listing.price)} · ${listing.location_name ?? "Brooklyn"}. ` +
     listing.description.slice(0, 140);
-  const cover = listing.images[0];
-
+  // The share image comes from ./opengraph-image.tsx.
   return {
     title: listing.title,
     description,
     openGraph: {
       title: `${listing.title} — ${formatPrice(listing.price)}`,
       description,
-      images: cover ? [{ url: `${IK_ENDPOINT}${cover.path}?tr=w-1200,h-630,fo-auto`, width: 1200, height: 630 }] : [],
+      siteName: "Stoop",
+      type: "website",
     },
   };
 }

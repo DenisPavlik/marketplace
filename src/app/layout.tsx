@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   description:
     "A local marketplace for secondhand finds. Browse what's for sale near you, message sellers in real time, and pick up down the block.",
   openGraph: { siteName: "Stoop", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
