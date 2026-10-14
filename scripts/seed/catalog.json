@@ -169,6 +169,14 @@
           "license": "cc0",
           "creator": null,
           "title": "Rolled tied teal yoga mat"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA0L2JzMTEzLWltYWdlLmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/11515772/closeup-teal-yoga-mat",
+          "license": "cc0",
+          "creator": null,
+          "title": "Closeup of teal yoga mat"
         }
       ]
     },
@@ -441,6 +449,22 @@
           "license": "cc0",
           "creator": "Serpstat",
           "title": "Seo Computer"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/HQV6HVSTAW.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/seo-serpstat-HQV6HVSTAW",
+          "license": "cc0",
+          "creator": "Serpstat",
+          "title": "Seo Serpstat"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/9699Y6WKLD.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/seo-ppc-9699Y6WKLD",
+          "license": "cc0",
+          "creator": "Serpstat",
+          "title": "Seo Ppc"
         }
       ]
     },
@@ -513,6 +537,14 @@
           "license": "cc0",
           "creator": null,
           "title": "Free tennis racket ball photo"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvc2szODgwLWltYWdlLWt3eW5vcmYyLmpwZw.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/5939085/tennis-racket",
+          "license": "cc0",
+          "creator": null,
+          "title": "Tennis racket"
         }
       ]
     },
@@ -525,18 +557,34 @@
       "condition": null,
       "status": "active",
       "daysAgo": 1,
-      "description": "Sunny room in a 3BR railroad off the Jefferson L, available Nov 1. Room fits a queen, has a closet and a window facing the courtyard. Two roommates, both in their late 20s, quiet on weeknights. Utilities split, around $80 a month. Bed frame can stay if you want it.",
+      "description": "Sunny room in a 3BR off the Jefferson L, available Nov 1. The room is empty and freshly painted, with parquet floors, a closet and a big window. It fits a queen. Shared kitchen with a dishwasher, a stainless fridge and a breakfast counter. Two roommates, both in their late 20s, quiet on weeknights. Utilities split, around $80 a month.",
       "locationName": "Bushwick, Brooklyn",
       "lat": 40.6987,
       "lng": -73.9204,
       "images": [
         {
-          "url": "https://cdn.stocksnap.io/img-thumbs/960w/12B5400E80.jpg",
-          "source": "stocksnap",
-          "landingUrl": "https://stocksnap.io/photo/bedroom-bed-12B5400E80",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Apartment_bedroom_with_parquet_wood_flooring.jpg/1280px-Apartment_bedroom_with_parquet_wood_flooring.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=88145537",
           "license": "cc0",
-          "creator": "Jay Mantri",
-          "title": "Bedroom Bed"
+          "creator": "Kurt Kaiser",
+          "title": "Apartment bedroom with parquet wood flooring"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Apartment_bedroom_with_parquet_wood_flooring_side_2.jpg/1280px-Apartment_bedroom_with_parquet_wood_flooring_side_2.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=88145539",
+          "license": "cc0",
+          "creator": "Kurt Kaiser",
+          "title": "Apartment bedroom with parquet wood flooring side 2"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Apartment_Kitchen_in_Washington%2C_DC.jpg/1280px-Apartment_Kitchen_in_Washington%2C_DC.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=87950857",
+          "license": "cc0",
+          "creator": "Kurt Kaiser",
+          "title": "Apartment Kitchen in Washington, DC"
         }
       ]
     },
@@ -1145,6 +1193,14 @@
           "license": "cc0",
           "creator": "Beauty and Fashion",
           "title": "Purse Bag"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/LCPTSTDLI7.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/woman-hand-LCPTSTDLI7",
+          "license": "cc0",
+          "creator": "Beauty and Fashion",
+          "title": "Woman Hand"
         }
       ]
     },
@@ -1190,6 +1246,14 @@
           "url": "https://cdn.stocksnap.io/img-thumbs/960w/ZJSI6MSWBQ.jpg",
           "source": "stocksnap",
           "landingUrl": "https://stocksnap.io/photo/christmas-gnome-ZJSI6MSWBQ",
+          "license": "cc0",
+          "creator": "Travel Photographer",
+          "title": "Christmas Gnome"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/FVS2NUPG8D.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/christmas-gnome-FVS2NUPG8D",
           "license": "cc0",
           "creator": "Travel Photographer",
           "title": "Christmas Gnome"
@@ -1319,24 +1383,48 @@
     {
       "key": "bed-stuy-1br",
       "seller": "marcus",
-      "title": "1BR with exposed brick, Bed-Stuy — $2,550/mo",
+      "title": "Bright 1BR with open kitchen, Bed-Stuy — $2,550/mo",
       "price": 2550,
       "category": "property",
       "condition": null,
       "status": "active",
       "daysAgo": 3,
-      "description": "Lease takeover for my cousin's one-bedroom, she's moving to Atlanta. Exposed brick, wood floors, split AC unit, separate bedroom that fits a queen. Third floor of a brownstone, 6 minutes to the Utica Ave A/C. Available Dec 1, lease runs through next August with the option to renew. Couch, desk and the yellow chair can stay if you want them. No broker fee.",
+      "description": "Lease takeover for my cousin's one-bedroom, she's moving to Atlanta. Big open living room and kitchen, oak floors, tall windows, and a separate bedroom behind sliding doors that fits a queen. Third floor of a brownstone, 6 minutes to the Utica Ave A/C. Available Dec 1, lease runs through next August with the option to renew. The desk and chairs can stay if you want them. No broker fee.",
       "locationName": "Bed-Stuy, Brooklyn",
       "lat": 40.6875,
       "lng": -73.935,
       "images": [
         {
-          "url": "https://cdn.stocksnap.io/img-thumbs/960w/NF6P1OX124.jpg",
-          "source": "stocksnap",
-          "landingUrl": "https://stocksnap.io/photo/house-interior-NF6P1OX124",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Empty_apartment_in_Berlin_with_fitted_kitchen_and_chair_2.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=147049468",
           "license": "cc0",
-          "creator": "Justin Schüler",
-          "title": "House Interior"
+          "creator": "SmashingIt99",
+          "title": "Empty apartment in Berlin with fitted kitchen and chair 2"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Empty_apartment_in_Berlin_with_fitted_kitchen%2C_chair_and_plant.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=147049472",
+          "license": "cc0",
+          "creator": "SmashingIt99",
+          "title": "Empty apartment in Berlin with fitted kitchen, chair and plant"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Empty_apartment_in_Berlin_with_fitted_kitchen_and_chair.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=147049469",
+          "license": "cc0",
+          "creator": "SmashingIt99",
+          "title": "Empty apartment in Berlin with fitted kitchen and chair"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Empty_apartment_in_Berlin_with_white_desk%2C_chair_and_ladder_01.jpg",
+          "source": "wikimedia",
+          "landingUrl": "https://commons.wikimedia.org/w/index.php?curid=147049467",
+          "license": "cc0",
+          "creator": "SmashingIt99",
+          "title": "Empty apartment in Berlin with white desk, chair and ladder 01"
         }
       ]
     },
@@ -1409,6 +1497,14 @@
           "license": "cc0",
           "creator": "Andrew Branch",
           "title": "Black Dog"
+        },
+        {
+          "url": "https://cdn.stocksnap.io/img-thumbs/960w/B5BW34U0RP.jpg",
+          "source": "stocksnap",
+          "landingUrl": "https://stocksnap.io/photo/black-dog-B5BW34U0RP",
+          "license": "cc0",
+          "creator": "Andrew Branch",
+          "title": "Black Dog"
         }
       ]
     },
@@ -1469,18 +1565,42 @@
       "condition": null,
       "status": "active",
       "daysAgo": 0,
-      "description": "Big bright room in a 2BR near Ditmars, available Nov 15. Comes furnished with a queen bed, armchair, rug and sheer curtains, or I can clear it out. You'd share the apartment with me (software engineer, quiet, out at the office three days a week) and my cat. Two windows, closet, laundry in the building. Utilities around $70. Looking for someone for at least 6 months.",
+      "description": "Big bright room in a 2BR near Ditmars, available Nov 15. Comes furnished with a queen bed with storage drawers, two nightstands and lamps, or I can clear it out. You'd share the apartment with me (software engineer, quiet, out at the office three days a week) and my cat. Open kitchen with an island and a dishwasher, and a living room with a big sofa. Closet, laundry in the building. Utilities around $70. Looking for someone for at least 6 months.",
       "locationName": "Astoria, Queens",
       "lat": 40.77,
       "lng": -73.915,
       "images": [
         {
-          "url": "https://cdn.stocksnap.io/img-thumbs/960w/XWI13131WH.jpg",
-          "source": "stocksnap",
-          "landingUrl": "https://stocksnap.io/photo/bedroom-bed-XWI13131WH",
-          "license": "cc0",
-          "creator": "Mary Whitney",
-          "title": "Bedroom Bed"
+          "url": "https://live.staticflickr.com/65535/52067485475_07403d6776_b.jpg",
+          "source": "flickr",
+          "landingUrl": "https://www.flickr.com/photos/80223459@N05/52067485475",
+          "license": "pdm",
+          "creator": "YellowstoneNPS",
+          "title": "Housing improvement project goal 1: two-bedroom unit, bedroom"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/52067485855_472403e4d4_b.jpg",
+          "source": "flickr",
+          "landingUrl": "https://www.flickr.com/photos/80223459@N05/52067485855",
+          "license": "pdm",
+          "creator": "YellowstoneNPS",
+          "title": "Housing improvement project goal 1: two-bedroom unit, living room"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/52067000921_3a55e0f0d8_b.jpg",
+          "source": "flickr",
+          "landingUrl": "https://www.flickr.com/photos/80223459@N05/52067000921",
+          "license": "pdm",
+          "creator": "YellowstoneNPS",
+          "title": "Housing improvement project goal 1: two-bedroom unit, kitchen and living room"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/52067013963_9aab0ea72f_b.jpg",
+          "source": "flickr",
+          "landingUrl": "https://www.flickr.com/photos/80223459@N05/52067013963",
+          "license": "pdm",
+          "creator": "YellowstoneNPS",
+          "title": "Housing improvement project goal 1: two-bedroom unit, kitchen"
         }
       ]
     },
@@ -2033,6 +2153,14 @@
           "license": "cc0",
           "creator": "Lottie's pets & stuff",
           "title": "Finished hamster habitat project"
+        },
+        {
+          "url": "https://live.staticflickr.com/6102/6337740743_47745e3a54_b.jpg",
+          "source": "flickr",
+          "landingUrl": "https://www.flickr.com/photos/36943025@N07/6337740743",
+          "license": "cc0",
+          "creator": "Lottie's pets & stuff",
+          "title": "Redecorated"
         }
       ]
     },
@@ -2069,18 +2197,58 @@
       "condition": null,
       "status": "active",
       "daysAgo": 1,
-      "description": "My loft is available while I'm in Berlin: November through April, possibly longer. About 900 sq ft, huge factory windows, herringbone floors, open kitchen, dining table for eight and a big sectional. Bedroom is a separate room off the living space. Fully furnished, utilities and wifi included. Ten minutes to the Greenpoint Ave G. Ideal for a quiet person or a couple who'll water the plants.",
+      "description": "My loft is available while I'm in Berlin: November through April, possibly longer. About 900 sq ft in an old brick factory: exposed brick, timber beams, big windows and wide-plank pine floors. Open kitchen with a big island and a gas range, a sofa and two armchairs around the fireplace. The bedroom is a separate room off the kitchen, plus a sleeping loft up the stairs for guests, and the bathroom has a soaking tub. Fully furnished, utilities and wifi included. Ten minutes to the Greenpoint Ave G. Ideal for a quiet person or a couple who'll water the plants.",
       "locationName": "Greenpoint, Brooklyn",
       "lat": 40.73,
       "lng": -73.955,
       "images": [
         {
-          "url": "https://cdn.stocksnap.io/img-thumbs/960w/478BZDEA2Y.jpg",
-          "source": "stocksnap",
-          "landingUrl": "https://stocksnap.io/photo/interior-design-478BZDEA2Y",
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL2ZsNDg5OTE5MDYxMjYtaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/9658336/uptown-apartment",
           "license": "cc0",
-          "creator": "Breather",
-          "title": "Interior Design"
+          "creator": null,
+          "title": "Uptown apartment"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL2ZsNDg5OTEzNjEyNDMtaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/9658339/uptown-apartment",
+          "license": "cc0",
+          "creator": null,
+          "title": "Uptown apartment"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL2ZsNDg5OTE5MDY2NzEtaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/9658077/uptown-apartment",
+          "license": "cc0",
+          "creator": null,
+          "title": "Uptown apartment"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL2ZsNDg5OTEzNjcwMDMtaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/9676713/uptown-apartment",
+          "license": "cc0",
+          "creator": null,
+          "title": "Uptown apartment"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL2ZsNDg5OTE5MTY0NzYtaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/9658090/uptown-apartment",
+          "license": "cc0",
+          "creator": null,
+          "title": "Uptown apartment"
+        },
+        {
+          "url": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL2ZsNDg5OTIxMDA0MjctaW1hZ2UuanBn.jpg",
+          "source": "rawpixel",
+          "landingUrl": "https://www.rawpixel.com/image/9658352/uptown-apartment",
+          "license": "cc0",
+          "creator": null,
+          "title": "Uptown apartment"
         }
       ]
     },
@@ -2297,6 +2465,14 @@
           "license": "cc0",
           "creator": "Lottie's pets & stuff",
           "title": "Doggy dreams"
+        },
+        {
+          "url": "https://live.staticflickr.com/8713/16979768317_44c27d64c9_b.jpg",
+          "source": "flickr",
+          "landingUrl": "https://www.flickr.com/photos/36943025@N07/16979768317",
+          "license": "cc0",
+          "creator": "Lottie's pets & stuff",
+          "title": "They sleep like this all the time"
         }
       ]
     }

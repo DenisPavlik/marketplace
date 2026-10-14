@@ -248,6 +248,7 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      assistant_take_quota: { Args: { p_visitor: string; p_secret: string }; Returns: string };
       is_valid_listing_images: { Args: { imgs: Json }; Returns: boolean };
       mark_conversation_read: { Args: { p_conversation_id: string }; Returns: undefined };
       start_conversation: { Args: { p_listing_id: string }; Returns: string };

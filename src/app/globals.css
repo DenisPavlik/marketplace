@@ -295,6 +295,119 @@
   }
 }
 
+/*
+ * Dot, the assistant. Eyes blink on their own, pupils follow --px/--py (set from JS),
+ * brows lift when it has something to say, and the mouth moves while it answers.
+ */
+.dot-face .dot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dot-blink 5.2s infinite;
+}
+.dot-face .dot-pupil {
+  transform: translate(var(--px, 0px), var(--py, 0px));
+  transition: transform 120ms ease-out;
+}
+.dot-face .dot-brow-l,
+.dot-face .dot-brow-r {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 260ms cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.dot-face .dot-mouth {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.dot-face[data-mood="curious"] .dot-brows {
+  transform: translateY(-5px);
+  transition: transform 260ms cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.dot-face[data-mood="thinking"] .dot-brow-l {
+  transform: translateY(-6px) rotate(-14deg);
+}
+.dot-face[data-mood="thinking"] .dot-brow-r {
+  transform: translateY(3px) rotate(12deg);
+}
+.dot-face[data-mood="thinking"] .dot-pupil {
+  transform: translate(3px, -3.5px);
+}
+.dot-face[data-mood="talking"] .dot-smile {
+  opacity: 0;
+}
+.dot-face[data-mood="talking"] .dot-mouth {
+  opacity: 1;
+  animation: dot-talk 300ms ease-in-out infinite alternate;
+}
+
+/* Dot's corner spot; it steps up above the sticky "Message seller" bar on listings. */
+.dot-dock {
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+@media (max-width: 1023px) {
+  :root[data-contact-bar] .dot-dock {
+    bottom: calc(5.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Gentle idle bob for the dock, a double hop when Dot has a tip. */
+.dot-bob {
+  animation: dot-bob 3.6s ease-in-out infinite;
+}
+.dot-hop {
+  animation: dot-hop 900ms cubic-bezier(0.3, 1.5, 0.5, 1) 2;
+}
+.dot-arrive {
+  animation: dot-arrive 700ms cubic-bezier(0.2, 0.9, 0.3, 1.3) 900ms backwards;
+}
+
+@keyframes dot-blink {
+  0%, 93%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.08);
+  }
+}
+@keyframes dot-talk {
+  from {
+    transform: scale(0.8, 0.35);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+@keyframes dot-bob {
+  0%, 100% {
+    translate: 0 0;
+    rotate: -4deg;
+  }
+  50% {
+    translate: 0 -4px;
+    rotate: 3deg;
+  }
+}
+@keyframes dot-hop {
+  0%, 100% {
+    translate: 0 0;
+  }
+  35% {
+    translate: 0 -14px;
+    rotate: -8deg;
+  }
+  65% {
+    translate: 0 0;
+    rotate: 4deg;
+  }
+}
+@keyframes dot-arrive {
+  from {
+    opacity: 0;
+    translate: 0 120%;
+    rotate: 25deg;
+  }
+}
+
 /* MapLibre controls follow the theme. */
 .maplibregl-ctrl-group {
   background: var(--color-surface) !important;

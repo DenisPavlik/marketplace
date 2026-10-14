@@ -33,6 +33,12 @@ export function StickyContactBar({
     return () => io.disconnect();
   }, []);
 
+  // Lets other floating UI (the assistant) step out of the bar's way.
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-contact-bar", visible);
+    return () => document.documentElement.removeAttribute("data-contact-bar");
+  }, [visible]);
+
   function jumpToMessage() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.getElementById("contact")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });

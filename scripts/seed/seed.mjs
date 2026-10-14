@@ -41,9 +41,12 @@ async function uploadAll() {
     for (const [i, img] of listing.images.entries()) {
       if (cache[img.url]) continue;
       process.stdout.write(`Uploading ${listing.key} #${i + 1}… `);
+      // Older uploads were named by position (<key>-<n>); new ones get a hash of the source URL
+      // so adding or reordering photos never overwrites a file a live listing still points to.
+      const tag = createHash("sha1").update(img.url).digest("hex").slice(0, 8);
       const res = await ik.files.upload({
         file: img.url,
-        fileName: `${listing.key}-${i + 1}.${img.url.includes("rawpixel") ? "webp" : "jpg"}`,
+        fileName: `${listing.key}-${tag}.${img.url.includes("rawpixel") ? "webp" : "jpg"}`,
         folder: "/stoop/seed",
         useUniqueFileName: false,
         overwriteFile: true,

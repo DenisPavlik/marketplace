@@ -46,7 +46,12 @@ export function ConversationList({ conversations, userId }: { conversations: Con
             aria-current={activeId === c.id ? "page" : undefined}
             className={clsx(
               "flex gap-3 px-4 py-3.5 transition-colors",
-              activeId === c.id ? "bg-paper" : "hover:bg-paper/60",
+              activeId === c.id
+                ? "bg-paper"
+                : c.unread
+                  ? // Unread threads are tinted with the brand color and keyed by a bar on the left.
+                    "bg-brand/[0.08] shadow-[inset_3px_0_0_var(--color-brand)] hover:bg-brand/[0.13]"
+                  : "hover:bg-paper/60",
             )}
           >
             <div className="relative shrink-0">

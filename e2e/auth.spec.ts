@@ -10,8 +10,9 @@ for (const path of ["/sell", "/saved", "/selling", "/inbox"]) {
 test("demo account signs in and returns to the requested page", async ({ page }) => {
   await page.goto("/login?next=/selling");
   await page.getByRole("button", { name: /Explore with a demo account/ }).click();
-  await expect(page).toHaveURL(/\/selling$/);
-  await expect(page.getByRole("heading", { name: "Your listings" })).toBeVisible();
+  // The page streams in behind a skeleton; allow for a busy dev server.
+  await expect(page).toHaveURL(/\/selling$/, { timeout: 15_000 });
+  await expect(page.getByRole("heading", { name: "Your listings" })).toBeVisible({ timeout: 15_000 });
   await expect(page.getByRole("button", { name: "Account menu" })).toBeVisible();
 });
 

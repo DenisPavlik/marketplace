@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { useState, useTransition, type FormEvent } from "react";
+import { useEffect, useState, useTransition, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Field, Input, Textarea } from "@/components/ui/field";
@@ -14,6 +14,7 @@ import { createListing, updateListing } from "@/app/actions/listings";
 import { CATEGORIES, CONDITIONS } from "@/lib/categories";
 import { DEFAULT_LOCATION } from "@/lib/filters";
 import type { ListingImage as ListingImageData } from "@/lib/listing";
+import { DRAFT_EVENT, DRAFT_STORAGE_KEY, type ListingDraft } from "@/lib/assistant/types";
 
 export type ListingFormValues = {
   title: string;
@@ -58,6 +59,36 @@ export function ListingForm({
     setValues((v) => ({ ...v, [key]: value }));
     setErrors((e) => ({ ...e, [key]: undefined }));
   };
+
+  // Drafts written by Dot, the assistant: sent live on this page, or left in storage
+  // when the visitor started from another page.
+  useEffect(() => {
+    if (editing) return;
+    const apply = (draft: ListingDraft) => {
+      setValues((v) => ({
+        ...v,
+        title: draft.title.slice(0, 100),
+        description: draft.description.slice(0, 5000),
+        category: CATEGORIES.some((c) => c.slug === draft.category) ? draft.category : v.category,
+        condition: CONDITIONS.some((c) => c.value === draft.condition) ? (draft.condition ?? null) : v.condition,
+        price: draft.price != null ? String(draft.price) : v.price,
+      }));
+      setErrors({});
+      toast.success("Draft filled in", { description: "Check the details, then add photos and a pickup area." });
+    };
+    const onDraft = (e: Event) => apply((e as CustomEvent<ListingDraft>).detail);
+    window.addEventListener(DRAFT_EVENT, onDraft);
+    try {
+      const stored = sessionStorage.getItem(DRAFT_STORAGE_KEY);
+      if (stored) {
+        sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+        apply(JSON.parse(stored) as ListingDraft);
+      }
+    } catch {
+      // Unreadable draft: start with an empty form.
+    }
+    return () => window.removeEventListener(DRAFT_EVENT, onDraft);
+  }, [editing]);
 
   const doneImages = uploads.flatMap((u) => (u.status === "done" ? [u.image] : []));
   const uploading = uploads.some((u) => u.status === "uploading");
