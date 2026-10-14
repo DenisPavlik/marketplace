@@ -5,7 +5,7 @@ import { DefaultChatTransport } from "ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { ArrowRight, ArrowUp, RotateCcw, Square, X } from "lucide-react";
+import { ArrowRight, ArrowUp, MessageSquarePlus, RotateCcw, Square, X } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { DotFace, type DotMood } from "@/components/assistant/dot-face";
 import type { AssistantContext, PageKind } from "@/components/assistant/assistant";
@@ -52,7 +52,9 @@ export function AssistantPanel({
   const [transport] = useState(() => new DefaultChatTransport<DotMessage>({ api: "/api/assistant" }));
   // Every request carries the page the visitor is on, so "this" can mean the open listing.
   const requestBody = { body: { context: { path: context.path, listingId: context.listingId } } };
-  const { messages, sendMessage, status, error, stop, regenerate, clearError } = useChat<DotMessage>({ transport });
+  const { messages, setMessages, sendMessage, status, error, stop, regenerate, clearError } = useChat<DotMessage>({
+    transport,
+  });
   const [input, setInput] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -88,6 +90,14 @@ export function AssistantPanel({
     setInput("");
   }
 
+  function startOver() {
+    void stop();
+    clearError();
+    setMessages([]);
+    setInput("");
+    inputRef.current?.focus();
+  }
+
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     send(input);
@@ -111,6 +121,17 @@ export function AssistantPanel({
           <p className="font-display text-[17px] leading-tight">Dot</p>
           <p className="text-xs text-ink-3">{busy ? (status === "submitted" ? "Thinking…" : "Typing…") : "Stoop's shopping helper"}</p>
         </div>
+        {messages.length > 0 && (
+          <button
+            type="button"
+            onClick={startOver}
+            title="New conversation"
+            className="inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold text-ink-2 hover:bg-ink/5 hover:text-ink"
+          >
+            <MessageSquarePlus className="size-4" />
+            <span className="max-[380px]:sr-only">New chat</span>
+          </button>
+        )}
         <button
           type="button"
           onClick={onClose}

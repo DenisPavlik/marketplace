@@ -1,13 +1,15 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import clsx from "clsx";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ListingImage } from "@/components/listing-image";
+import { Lightbox } from "@/components/listing/lightbox";
 import type { ListingImage as ListingImageData } from "@/lib/listing";
 
 export function Gallery({ images, title }: { images: ListingImageData[]; title: string }) {
   const [index, setIndex] = useState(0);
+  const [viewerOpen, setViewerOpen] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const count = images.length;
 
@@ -50,7 +52,11 @@ export function Gallery({ images, title }: { images: ListingImageData[]; title: 
       }}
     >
       <div className="relative overflow-hidden rounded-2xl bg-sunken">
-        <div ref={trackRef} className="flex aspect-[4/3] snap-x snap-mandatory overflow-x-auto scrollbar-none">
+        <div
+          ref={trackRef}
+          onClick={() => setViewerOpen(true)}
+          className="flex aspect-[4/3] cursor-zoom-in snap-x snap-mandatory overflow-x-auto scrollbar-none"
+        >
           {images.map((img, i) => (
             <div
               key={img.fileId}
@@ -69,6 +75,14 @@ export function Gallery({ images, title }: { images: ListingImageData[]; title: 
             </div>
           ))}
         </div>
+        <button
+          type="button"
+          onClick={() => setViewerOpen(true)}
+          aria-label="View photos full screen"
+          className="absolute right-3 top-3 grid size-10 place-items-center rounded-full bg-surface/90 text-ink shadow-md backdrop-blur transition-transform hover:scale-105"
+        >
+          <Maximize2 className="size-[18px]" />
+        </button>
         {count > 1 && (
           <>
             <NavButton side="left" onClick={() => go(index - 1)} />
@@ -81,7 +95,8 @@ export function Gallery({ images, title }: { images: ListingImageData[]; title: 
       </div>
 
       {count > 1 && (
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+        // Padding gives the selected thumbnail's ring room; overflow-x would clip it otherwise.
+        <div className="-m-1 flex gap-2 overflow-x-auto p-1 scrollbar-none">
           {images.map((img, i) => (
             <button
               key={img.fileId}
@@ -106,6 +121,20 @@ export function Gallery({ images, title }: { images: ListingImageData[]; title: 
           ))}
         </div>
       )}
+
+      <Lightbox
+        images={images}
+        title={title}
+        open={viewerOpen}
+        startIndex={index}
+        onClose={(i) => {
+          setViewerOpen(false);
+          // Land on the photo the viewer ended on.
+          setIndex(i);
+          const track = trackRef.current;
+          track?.scrollTo({ left: i * track.clientWidth });
+        }}
+      />
     </div>
   );
 }
